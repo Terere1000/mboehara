@@ -1,0 +1,109 @@
+/* Bilingual UI strings (ES / EN). The taught language is always Guaraní. */
+const I18N = {
+  es: {
+    "hero.tagline": "Aprendé guaraní jugando",
+    "home.path": "Tu camino de aprendizaje",
+    "home.pathSub": "12 grados, como en la escuela paraguaya. Completá un grado para desbloquear el siguiente.",
+    "home.profile": "Mi perfil",
+    "world.lessons": "lecciones",
+    "world.locked": "Completá el grado anterior",
+    "world.start": "Empezar",
+    "world.review": "Repasar",
+    "lesson.lessons": "Lecciones",
+    "lesson.start": "Comenzar",
+    "lesson.continue": "Continuar",
+    "lesson.done": "Completada",
+    "ask.translateToGn": "¿Cómo se dice en guaraní?",
+    "ask.translateFromGn": "¿Qué significa en español?",
+    "ask.matchPairs": "Uní cada palabra con su significado",
+    "ask.buildWord": "Formá la palabra en guaraní",
+    "ask.trueFalse": "¿Es correcta esta traducción?",
+    "tf.true": "Verdadero",
+    "tf.false": "Falso",
+    "fb.correct": "¡Iporã! (¡Correcto!)",
+    "fb.wrong": "Mba'eve. La respuesta es:",
+    "btn.check": "Verificar",
+    "btn.continue": "Continuar",
+    "btn.clear": "Borrar",
+    "complete.title": "¡Lección completada!",
+    "complete.xp": "XP ganado",
+    "complete.accuracy": "Precisión",
+    "complete.continue": "Seguir",
+    "complete.failTitle": "¡Te quedaste sin vidas!",
+    "complete.retry": "Reintentar",
+    "complete.back": "Volver al grado",
+    "profile.title": "Mi perfil",
+    "profile.level": "Nivel",
+    "profile.xp": "XP total",
+    "profile.streak": "Racha (días)",
+    "profile.lessons": "Lecciones hechas",
+    "profile.stars": "Estrellas",
+    "profile.grades": "Grados completos",
+    "profile.reset": "Reiniciar progreso",
+    "profile.resetConfirm": "¿Borrar todo tu progreso? No se puede deshacer.",
+    "footer.note": "Mbo'ehára · Borrador educativo de guaraní · hecho con cariño 🇵🇾",
+    "grade": "Grado"
+  },
+  en: {
+    "hero.tagline": "Learn Guaraní by playing",
+    "home.path": "Your learning path",
+    "home.pathSub": "12 grades, like Paraguayan school. Finish a grade to unlock the next.",
+    "home.profile": "My profile",
+    "world.lessons": "lessons",
+    "world.locked": "Finish the previous grade",
+    "world.start": "Start",
+    "world.review": "Review",
+    "lesson.lessons": "Lessons",
+    "lesson.start": "Start",
+    "lesson.continue": "Continue",
+    "lesson.done": "Completed",
+    "ask.translateToGn": "How do you say it in Guaraní?",
+    "ask.translateFromGn": "What does it mean in English?",
+    "ask.matchPairs": "Match each word with its meaning",
+    "ask.buildWord": "Build the Guaraní word",
+    "ask.trueFalse": "Is this translation correct?",
+    "tf.true": "True",
+    "tf.false": "False",
+    "fb.correct": "Iporã! (Correct!)",
+    "fb.wrong": "Not quite. The answer is:",
+    "btn.check": "Check",
+    "btn.continue": "Continue",
+    "btn.clear": "Clear",
+    "complete.title": "Lesson complete!",
+    "complete.xp": "XP earned",
+    "complete.accuracy": "Accuracy",
+    "complete.continue": "Continue",
+    "complete.failTitle": "You ran out of hearts!",
+    "complete.retry": "Try again",
+    "complete.back": "Back to grade",
+    "profile.title": "My profile",
+    "profile.level": "Level",
+    "profile.xp": "Total XP",
+    "profile.streak": "Streak (days)",
+    "profile.lessons": "Lessons done",
+    "profile.stars": "Stars",
+    "profile.grades": "Grades complete",
+    "profile.reset": "Reset progress",
+    "profile.resetConfirm": "Erase all your progress? This cannot be undone.",
+    "footer.note": "Mbo'ehára · Educational Guaraní draft · made with care 🇵🇾",
+    "grade": "Grade"
+  }
+};
+
+const i18n = {
+  lang: localStorage.getItem("mboehara.lang") || "es",
+  t(key) { return (I18N[this.lang] && I18N[this.lang][key]) || key; },
+  // returns the meaning string in the active UI language from a {es,en} pair
+  meaning(pair) { return pair[this.lang] || pair.es || pair.en; },
+  toggle() {
+    this.lang = this.lang === "es" ? "en" : "es";
+    localStorage.setItem("mboehara.lang", this.lang);
+    document.documentElement.lang = this.lang;
+  },
+  apply() {
+    document.documentElement.lang = this.lang;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      el.textContent = this.t(el.getAttribute("data-i18n"));
+    });
+  }
+};
