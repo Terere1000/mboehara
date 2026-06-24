@@ -39,8 +39,14 @@ In the repo: **Settings → Pages → Build from branch → `main` / root**, the
 ## Tech
 Plain HTML, CSS and vanilla JavaScript. The curriculum lives in `js/data/curriculum.js`; the exercise engine in `js/game.js`; screens/navigation in `js/app.js`; progress persistence in `js/progress.js`; UI strings in `js/i18n.js`.
 
+## Audio
+Tap the 🔊 button next to a Guaraní word to hear it. This uses the browser's built-in
+speech synthesis with a **Spanish** voice (browsers have no Guaraní voice), so it is an
+**approximate** pronunciation — it mispronounces Guaraní-specific sounds (nasal vowels,
+the glottal stop). A native-speaker recording is the planned long-term replacement.
+
 ## Note on content
-The Guaraní vocabulary is an **educational draft** drawn from standard references and the MEC program structure. A native-speaker / teacher review is recommended before classroom use. Audio pronunciation is a planned future addition.
+The Guaraní vocabulary is an **educational draft** drawn from standard references and the MEC program structure. A native-speaker / teacher review is recommended before classroom use.
 
 ---
 *Made with care · Ojejapo mborayhúpe*

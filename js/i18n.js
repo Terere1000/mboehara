@@ -42,7 +42,8 @@ const I18N = {
     "profile.reset": "Reiniciar progreso",
     "profile.resetConfirm": "¿Borrar todo tu progreso? No se puede deshacer.",
     "footer.note": "Mbo'ehára · Borrador educativo de guaraní · hecho con cariño 🇵🇾",
-    "grade": "Grado"
+    "grade": "Grado",
+    "audio.approx": "Escuchar (pronunciación aproximada)"
   },
   en: {
     "hero.tagline": "Learn Guaraní by playing",
@@ -86,7 +87,8 @@ const I18N = {
     "profile.reset": "Reset progress",
     "profile.resetConfirm": "Erase all your progress? This cannot be undone.",
     "footer.note": "Mbo'ehára · Educational Guaraní draft · made with care 🇵🇾",
-    "grade": "Grade"
+    "grade": "Grade",
+    "audio.approx": "Listen (approximate pronunciation)"
   }
 };
 

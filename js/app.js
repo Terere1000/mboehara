@@ -4,6 +4,7 @@
 const App = {
   init() {
     Progress.load();
+    Speech.init();
     i18n.apply();
 
     document.getElementById("brand-home").onclick = () => this.home();
