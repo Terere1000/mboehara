@@ -109,6 +109,8 @@ body {
   font-size: 1.05rem; font-weight: 600; cursor: pointer; transition: .12s; }
 .option:hover { border-color: var(--accent); }
 .option.selected { border-color: var(--ink); background: #f7f7f7; }
+.option.correct { border-color: var(--green); background: var(--green-soft); color: var(--green); }
+.option.wrong { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
 .option:disabled { cursor: default; opacity: .5; }
 
 /* build word */

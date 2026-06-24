@@ -111,7 +111,20 @@ const Game = {
         box.querySelectorAll(".option").forEach(b => b.classList.remove("selected"));
         btn.classList.add("selected");
         chosen = ex.options[+btn.dataset.i];
-        this._enableCheck(() => this._gradeChoice(chosen.word === ex.word, ex.word));
+        this._enableCheck(() => {
+          const isRight = chosen.word === ex.word;
+          // Mark options and add a speaker on the correct (Guaraní) option.
+          box.querySelectorAll(".option").forEach((b, i) => {
+            const opt = ex.options[i];
+            if (opt.word === ex.word) {
+              b.classList.add("correct");
+              if (ex.dir === "toGn") b.insertAdjacentHTML("beforeend", " " + Speech.btn(opt.word.gn));
+            } else if (opt === chosen && !isRight) {
+              b.classList.add("wrong");
+            }
+          });
+          this._gradeChoice(isRight, ex.word);
+        });
       };
     });
   },
