@@ -18,10 +18,6 @@ Scripts load in this order (see `index.html`):
 5. `js/game.js` — `Game`: builds exercises from a lesson's vocab and runs the lesson loop (hearts, scoring, stars).
 6. `js/app.js` — `App`: the three screens (Home/world-map, Grade/lesson-list, Profile) + top-bar.
 
-Also `js/speech.js` — `Speech`: approximate pronunciation via browser SpeechSynthesis
-(falls back to a Spanish voice; loaded before `game.js`). `Speech.btn(gn)` returns a 🔊
-button; clicks are handled by global delegation in `Speech.init()` (called from `App.init`).
-
 Other files: `css/styles.css` (white minimalist theme, CSS variables in `:root`),
 `assets/mascot.svg` (Jasy Jateré stick-figure mascot).
 

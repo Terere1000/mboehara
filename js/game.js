@@ -98,10 +98,9 @@ const Game = {
     const box = document.getElementById("exercise");
     const ask = ex.dir === "toGn" ? i18n.t("ask.translateToGn") : i18n.t("ask.translateFromGn");
     const prompt = ex.dir === "toGn" ? i18n.meaning(ex.word) : ex.word.gn;
-    const say = ex.dir === "toGn" ? "" : Speech.btn(ex.word.gn);
     box.innerHTML = `
       <p class="ask">${ask}</p>
-      <p class="prompt-word">${prompt} ${say}</p>
+      <p class="prompt-word">${prompt}</p>
       <div class="options">${ex.options.map((o, i) =>
         `<button class="option" data-i="${i}">${o.label}</button>`).join("")}</div>`;
     let chosen = null;
@@ -118,7 +117,6 @@ const Game = {
             const opt = ex.options[i];
             if (opt.word === ex.word) {
               b.classList.add("correct");
-              if (ex.dir === "toGn") b.insertAdjacentHTML("beforeend", " " + Speech.btn(opt.word.gn));
             } else if (opt === chosen && !isRight) {
               b.classList.add("wrong");
             }
@@ -133,7 +131,7 @@ const Game = {
     const box = document.getElementById("exercise");
     box.innerHTML = `
       <p class="ask">${i18n.t("ask.trueFalse")}</p>
-      <p class="prompt-word">${ex.word.gn} ${Speech.btn(ex.word.gn)}</p>
+      <p class="prompt-word">${ex.word.gn}</p>
       <p class="prompt-sub">= ${i18n.meaning(ex.shown)}</p>
       <div class="options options-tf">
         <button class="option" data-v="true">✅ ${i18n.t("tf.true")}</button>
@@ -241,14 +239,12 @@ const Game = {
       s.correct++;
       Progress.addXp(10);
       fb.className = "feedback show ok";
-      const okSay = word ? Speech.btn(word.gn) : "";
-      fb.innerHTML = `<img src="assets/mascot.svg" class="fb-mascot happy" alt=""><span>${i18n.t("fb.correct")}</span>${okSay}`;
+      fb.innerHTML = `<img src="assets/mascot.svg" class="fb-mascot happy" alt=""><span>${i18n.t("fb.correct")}</span>`;
     } else {
       s.hearts--;
       fb.className = "feedback show bad";
       const ans = word ? `<b>${word.gn}</b> — ${i18n.meaning(word)}` : "";
-      const badSay = word ? Speech.btn(word.gn) : "";
-      fb.innerHTML = `<img src="assets/mascot.svg" class="fb-mascot sad" alt=""><span>${i18n.t("fb.wrong")} ${ans}</span>${badSay}`;
+      fb.innerHTML = `<img src="assets/mascot.svg" class="fb-mascot sad" alt=""><span>${i18n.t("fb.wrong")} ${ans}</span>`;
     }
 
     if (btn) {
