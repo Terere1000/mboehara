@@ -42,7 +42,14 @@ const I18N = {
     "profile.reset": "Reiniciar progreso",
     "profile.resetConfirm": "¿Borrar todo tu progreso? No se puede deshacer.",
     "footer.note": "Mbo'ehára · Borrador educativo de guaraní · hecho con cariño 🇵🇾",
-    "grade": "Grado"
+    "grade": "Grado",
+    "expr.title": "Expresiones Comunes",
+    "expr.sub": "200 expresiones útiles en guaraní",
+    "expr.open": "Explorar expresiones",
+    "expr.search": "Buscar en guaraní o español…",
+    "expr.all": "Todas",
+    "expr.count": "expresiones",
+    "expr.none": "No se encontraron expresiones"
   },
   en: {
     "hero.tagline": "Learn Guaraní by playing",
@@ -86,7 +93,14 @@ const I18N = {
     "profile.reset": "Reset progress",
     "profile.resetConfirm": "Erase all your progress? This cannot be undone.",
     "footer.note": "Mbo'ehára · Educational Guaraní draft · made with care 🇵🇾",
-    "grade": "Grade"
+    "grade": "Grade",
+    "expr.title": "Common Expressions",
+    "expr.sub": "200 useful Guaraní expressions",
+    "expr.open": "Explore expressions",
+    "expr.search": "Search in Guaraní or Spanish…",
+    "expr.all": "All",
+    "expr.count": "expressions",
+    "expr.none": "No expressions found"
   }
 };
 

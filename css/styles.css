@@ -74,6 +74,48 @@ body {
 .world-check { position: absolute; top: 12px; right: 14px; color: var(--green); font-weight: 900; }
 .world.done .world-bar-fill { background: var(--green); }
 
+/* ---------- Expresiones Comunes ---------- */
+.expr-entry {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  border: 1.5px solid var(--line); background: var(--card); border-radius: var(--radius);
+  padding: 16px; cursor: pointer; transition: .15s; box-shadow: var(--shadow);
+}
+.expr-entry:hover { transform: translateY(-2px); border-color: var(--accent); }
+.expr-entry-icon { width: 44px; height: 44px; border-radius: 12px; flex: none; font-size: 1.4rem;
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--accent) 12%, #fff); }
+.expr-entry-go { margin-left: auto; color: var(--accent); font-weight: 800; font-size: .85rem; white-space: nowrap; }
+
+.expr-search {
+  width: 100%; border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 16px;
+  font-size: 1rem; font-family: inherit; margin-bottom: 14px; background: #fff; color: var(--ink);
+}
+.expr-search:focus { outline: none; border-color: var(--accent); }
+
+.filterbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.filter-pill {
+  border: 1.5px solid var(--line); background: #fff; color: var(--ink); cursor: pointer;
+  border-radius: 999px; padding: 6px 14px; font-size: .85rem; font-weight: 600; transition: .12s;
+}
+.filter-pill:hover { border-color: var(--accent); }
+.filter-pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.expr-count { font-size: .82rem; margin-bottom: 12px; }
+
+.expr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.expr-card {
+  border: 1.5px solid var(--line); background: var(--card); border-radius: var(--radius);
+  padding: 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 4px;
+}
+.expr-gn { font-size: 1.15rem; font-weight: 800; margin: 0; letter-spacing: -.3px; }
+.expr-es { color: var(--muted); margin: 0; font-size: .92rem; }
+.expr-badge {
+  align-self: flex-start; margin-top: 8px; font-size: .7rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 999px; color: var(--badge, var(--accent));
+  background: color-mix(in srgb, var(--badge, var(--accent)) 12%, #fff);
+}
+.expr-empty { grid-column: 1 / -1; text-align: center; padding: 30px 0; }
+
 /* ---------- Grade head + lessons ---------- */
 .grade-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
 .grade-head h2 { margin: 0; font-size: 1.4rem; }

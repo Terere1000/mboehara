@@ -30,6 +30,7 @@ const App = {
     if (this.route.name === "home") this.home();
     else if (this.route.name === "grade") this.grade(this.route.gradeIdx);
     else if (this.route.name === "profile") this.profile();
+    else if (this.route.name === "expressions") this.expressions();
   },
 
   // ---------- Home / world map ----------
@@ -66,11 +67,87 @@ const App = {
         <h2>${i18n.t("home.path")}</h2>
         <p class="muted">${i18n.t("home.pathSub")}</p>
       </section>
-      <section class="worlds">${cards}</section>`;
+      <section class="worlds">${cards}</section>
+      <section class="path-head"><h2>${i18n.t("expr.title")}</h2></section>
+      <button class="expr-entry" id="expr-entry">
+        <span class="expr-entry-icon">💬</span>
+        <span class="world-meta">
+          <span class="world-title">${i18n.t("expr.title")}</span>
+          <span class="world-sub">${i18n.t("expr.sub")}</span>
+        </span>
+        <span class="expr-entry-go">${i18n.t("expr.open")} →</span>
+      </button>`;
 
     app.querySelectorAll(".world:not(.locked)").forEach(b => {
       b.onclick = () => this.grade(+b.dataset.i);
     });
+    document.getElementById("expr-entry").onclick = () => this.expressions();
+    this.refreshTopbar();
+  },
+
+  // ---------- Expresiones Comunes (standalone section) ----------
+  expressions() {
+    this.route = { name: "expressions" };
+    if (!this._expr) this._expr = { cat: "*", q: "" };
+    const app = document.getElementById("app");
+
+    const pills = ['<button class="filter-pill" data-cat="*">' + i18n.t("expr.all") + "</button>"]
+      .concat(EXPRESSION_CATEGORIES.map(c =>
+        `<button class="filter-pill" data-cat="${c}">${c}</button>`)).join("");
+
+    app.innerHTML = `
+      <section class="grade-head">
+        <button class="back" id="back">←</button>
+        <span class="grade-icon">💬</span>
+        <div>
+          <h2>${i18n.t("expr.title")}</h2>
+          <p class="muted">${i18n.t("expr.sub")}</p>
+        </div>
+      </section>
+      <input type="search" class="expr-search" id="expr-search"
+             placeholder="${i18n.t("expr.search")}" value="${this._expr.q.replace(/"/g, "&quot;")}">
+      <div class="filterbar" id="filterbar">${pills}</div>
+      <div class="expr-count muted" id="expr-count"></div>
+      <section class="expr-grid" id="expr-grid"></section>`;
+
+    document.getElementById("back").onclick = () => this.home();
+
+    const grid = document.getElementById("expr-grid");
+    const countEl = document.getElementById("expr-count");
+    const searchEl = document.getElementById("expr-search");
+    const bar = document.getElementById("filterbar");
+
+    const catColor = c => {
+      const i = Math.max(0, EXPRESSION_CATEGORIES.indexOf(c));
+      return `hsl(${(i * 47) % 360} 55% 45%)`;
+    };
+
+    const render = () => {
+      const q = this._expr.q.trim().toLowerCase();
+      const cat = this._expr.cat;
+      const list = EXPRESSIONS.filter(e =>
+        (cat === "*" || e.category === cat) &&
+        (!q || e.guarani.toLowerCase().includes(q) || e.spanish.toLowerCase().includes(q)));
+
+      bar.querySelectorAll(".filter-pill").forEach(p =>
+        p.classList.toggle("active", p.dataset.cat === cat));
+      countEl.textContent = list.length + " " + i18n.t("expr.count");
+
+      grid.innerHTML = list.length
+        ? list.map(e => `
+            <article class="expr-card">
+              <p class="expr-gn">${e.guarani}</p>
+              <p class="expr-es">${e.spanish}</p>
+              <span class="expr-badge" style="--badge:${catColor(e.category)}">${e.category}</span>
+            </article>`).join("")
+        : `<p class="expr-empty muted">${i18n.t("expr.none")}</p>`;
+    };
+
+    searchEl.oninput = () => { this._expr.q = searchEl.value; render(); };
+    bar.querySelectorAll(".filter-pill").forEach(p => {
+      p.onclick = () => { this._expr.cat = p.dataset.cat; render(); };
+    });
+    render();
     this.refreshTopbar();
   },
 
