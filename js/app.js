@@ -127,12 +127,16 @@ const App = {
       return `hsl(${(i * 47) % 360} 55% 45%)`;
     };
 
+    const exprMeaning = e => (i18n.lang === "en" && e.english) ? e.english : e.spanish;
+
     const render = () => {
       const q = this._expr.q.trim().toLowerCase();
       const cat = this._expr.cat;
       const list = EXPRESSIONS.filter(e =>
         (cat === "*" || e.category === cat) &&
-        (!q || e.guarani.toLowerCase().includes(q) || e.spanish.toLowerCase().includes(q)));
+        (!q || e.guarani.toLowerCase().includes(q) ||
+               e.spanish.toLowerCase().includes(q) ||
+               (e.english && e.english.toLowerCase().includes(q))));
 
       bar.querySelectorAll(".filter-pill").forEach(p =>
         p.classList.toggle("active", p.dataset.cat === cat));
@@ -142,7 +146,7 @@ const App = {
         ? list.map(e => `
             <article class="expr-card">
               <p class="expr-gn">${e.guarani}</p>
-              <p class="expr-es">${e.spanish}</p>
+              <p class="expr-es">${exprMeaning(e)}</p>
               <span class="expr-badge" style="--badge:${catColor(e.category)}">${catLabel(e.category)}</span>
             </article>`).join("")
         : `<p class="expr-empty muted">${i18n.t("expr.none")}</p>`;

@@ -13,7 +13,7 @@ No build step, no dependencies (Node/npm are not installed and not needed).
 Scripts load in this order (see `index.html`):
 1. `js/data/curriculum.js` — `CURRICULUM`: the 12 grades → lessons → vocab. **Most content edits happen here.**
 2. `js/data/index.js` — `grades` alias + learner `RANKS` / `rankForLevel()`.
-2b. `js/data/expressions.js` — `EXPRESSIONS` (200 `{guarani, spanish, category}`) + `EXPRESSION_CATEGORIES`, powering the standalone "Expresiones Comunes" section (`App.expressions()` — filter bar + search). Regenerate from `guarani-expressions.ts` if that reference file is added.
+2b. `js/data/expressions.js` — `EXPRESSIONS` (200 `{guarani, spanish, english, category}`), `EXPRESSION_CATEGORIES`, and `EXPRESSION_CATEGORY_LABELS` ({es,en} per category), powering the standalone "Expresiones Comunes" section (`App.expressions()` — filter bar + search). Card gloss + category labels follow the ES/EN toggle; the `category` field stays the canonical Spanish key. Regenerate from `guarani-expressions.ts` if that reference file is added.
 3. `js/i18n.js` — `i18n` object: ES/EN UI strings (`I18N`), language toggle, `i18n.meaning({es,en})`.
 4. `js/progress.js` — `Progress`: localStorage state (XP, level, streak, completed lessons, stars, grade unlocks).
 5. `js/game.js` — `Game`: builds exercises from a lesson's vocab and runs the lesson loop (hearts, scoring, stars).
