@@ -250,7 +250,8 @@ const _EXPRESSIONS_BY_CATEGORY = {
 // Flatten to the required flat array of { guarani, spanish, english, category }.
 const EXPRESSIONS = Object.keys(_EXPRESSIONS_BY_CATEGORY).reduce((acc, category) => {
   _EXPRESSIONS_BY_CATEGORY[category].forEach(function (row) {
-    acc.push({ guarani: row[0], spanish: row[1], english: row[2], category: category });
+    // `id` is a stable per-expression key (used for local voice recordings).
+    acc.push({ id: "expr-" + acc.length, guarani: row[0], spanish: row[1], english: row[2], category: category });
   });
   return acc;
 }, []);

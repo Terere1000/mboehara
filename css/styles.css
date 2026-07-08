@@ -107,8 +107,29 @@ body {
   border: 1.5px solid var(--line); background: var(--card); border-radius: var(--radius);
   padding: 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 4px;
 }
+.expr-pron-note { font-size: .78rem; margin: -4px 0 12px; }
+.expr-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
 .expr-gn { font-size: 1.15rem; font-weight: 800; margin: 0; letter-spacing: -.3px; }
-.expr-es { color: var(--muted); margin: 0; font-size: .92rem; }
+.expr-pron { margin: 2px 0 0; font-size: .82rem; color: var(--green); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.expr-es { color: var(--muted); margin: 4px 0 0; font-size: .92rem; }
+
+/* pronunciation controls */
+.pron-play { border: none; background: none; cursor: pointer; font-size: 1.15rem; line-height: 1;
+  padding: 2px 4px; border-radius: 8px; opacity: .7; flex: none; }
+.pron-play:hover { opacity: 1; background: #f2f2f2; }
+.has-rec .pron-play { opacity: 1; }
+.expr-rec-row { display: flex; align-items: center; gap: 6px; margin-top: 10px; }
+.pron-rec { display: inline-flex; align-items: center; gap: 5px; border: 1.5px solid var(--line);
+  background: #fff; color: var(--ink); border-radius: 999px; padding: 5px 12px; cursor: pointer;
+  font-size: .78rem; font-weight: 600; font-family: inherit; }
+.pron-rec:hover { border-color: var(--accent); }
+.pron-rec.recorded { border-color: var(--green); color: var(--green); background: var(--green-soft); }
+.pron-rec.recording { border-color: var(--accent); color: var(--accent); background: var(--accent-soft);
+  animation: pulse 1s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.55} }
+.pron-del { border: 1.5px solid var(--line); background: #fff; cursor: pointer; border-radius: 999px;
+  padding: 5px 9px; font-size: .8rem; line-height: 1; }
+.pron-del:hover { border-color: var(--accent); }
 .expr-badge {
   align-self: flex-start; margin-top: 8px; font-size: .7rem; font-weight: 700;
   padding: 3px 10px; border-radius: 999px; color: var(--badge, var(--accent));

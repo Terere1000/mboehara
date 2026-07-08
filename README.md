@@ -39,6 +39,16 @@ In the repo: **Settings → Pages → Build from branch → `main` / root**, the
 ## Tech
 Plain HTML, CSS and vanilla JavaScript. The curriculum lives in `js/data/curriculum.js`; the exercise engine in `js/game.js`; screens/navigation in `js/app.js`; progress persistence in `js/progress.js`; UI strings in `js/i18n.js`.
 
+## Pronunciation (Expresiones Comunes)
+Each of the 200 expressions has:
+- a **written phonetic guide** (e.g. `[mba-'É-i-cha-pa]`) generated from the Guaraní
+  spelling — approximate: `’` = glottal stop, `ɨ` = guttural *y*, CAPS = stressed syllable;
+- a **🔊 Listen** button. If you've recorded your own voice for that expression it plays
+  your recording; otherwise it falls back to the browser's Spanish voice (approximate);
+- a **🎤 Record my voice** button. Recordings are stored locally in your browser
+  (IndexedDB) and can be deleted (🗑). Recording needs mic permission and a secure context
+  (works on `localhost` and on the GitHub Pages `https://` site, not from a `file://` path).
+
 ## Note on content
 The Guaraní vocabulary is an **educational draft** drawn from standard references and the MEC program structure. A native-speaker / teacher review is recommended before classroom use.
 

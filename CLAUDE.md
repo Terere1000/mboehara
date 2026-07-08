@@ -19,6 +19,12 @@ Scripts load in this order (see `index.html`):
 5. `js/game.js` — `Game`: builds exercises from a lesson's vocab and runs the lesson loop (hearts, scoring, stars).
 6. `js/app.js` — `App`: the three screens (Home/world-map, Grade/lesson-list, Profile) + top-bar.
 
+`js/audio.js` — used only by the Expresiones Comunes section. `Pron.guide(gn)` builds an
+approximate written phonetic guide from Guaraní spelling. `ExprAudio` plays a user's own
+recording when present (stored in IndexedDB "mboehara-audio", keyed by expression `id`)
+else browser TTS (Spanish voice), and records via MediaRecorder. Loaded before `game.js`;
+init'd in `App.init`. Recording needs a secure context (localhost / https).
+
 Other files: `css/styles.css` (white minimalist theme, CSS variables in `:root`),
 `assets/mascot.svg` (Jasy Jateré stick-figure mascot).
 
