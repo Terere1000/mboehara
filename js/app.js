@@ -91,9 +91,14 @@ const App = {
     if (!this._expr) this._expr = { cat: "*", q: "" };
     const app = document.getElementById("app");
 
+    const catLabel = c => {
+      const l = EXPRESSION_CATEGORY_LABELS[c];
+      return l ? i18n.meaning(l) : c;
+    };
+
     const pills = ['<button class="filter-pill" data-cat="*">' + i18n.t("expr.all") + "</button>"]
       .concat(EXPRESSION_CATEGORIES.map(c =>
-        `<button class="filter-pill" data-cat="${c}">${c}</button>`)).join("");
+        `<button class="filter-pill" data-cat="${c}">${catLabel(c)}</button>`)).join("");
 
     app.innerHTML = `
       <section class="grade-head">
@@ -138,7 +143,7 @@ const App = {
             <article class="expr-card">
               <p class="expr-gn">${e.guarani}</p>
               <p class="expr-es">${e.spanish}</p>
-              <span class="expr-badge" style="--badge:${catColor(e.category)}">${e.category}</span>
+              <span class="expr-badge" style="--badge:${catColor(e.category)}">${catLabel(e.category)}</span>
             </article>`).join("")
         : `<p class="expr-empty muted">${i18n.t("expr.none")}</p>`;
     };

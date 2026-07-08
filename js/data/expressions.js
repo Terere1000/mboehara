@@ -255,5 +255,31 @@ const EXPRESSIONS = Object.keys(_EXPRESSIONS_BY_CATEGORY).reduce((acc, category)
   return acc;
 }, []);
 
-// Ordered list of categories (for the filter bar).
+// Ordered list of categories (for the filter bar). The Spanish name is the canonical
+// key used in each expression's `category` field and in filter state.
 const EXPRESSION_CATEGORIES = Object.keys(_EXPRESSIONS_BY_CATEGORY);
+
+// Bilingual display labels for categories (keyed by the canonical Spanish name).
+// Used only for display; filtering/data still keys off the Spanish name.
+const EXPRESSION_CATEGORY_LABELS = {
+  "Saludos": { es: "Saludos", en: "Greetings" },
+  "Despedidas": { es: "Despedidas", en: "Farewells" },
+  "Cortesía": { es: "Cortesía", en: "Courtesy" },
+  "Presentaciones": { es: "Presentaciones", en: "Introductions" },
+  "Familia": { es: "Familia", en: "Family" },
+  "Preguntas": { es: "Preguntas", en: "Questions" },
+  "Sentimientos": { es: "Sentimientos", en: "Feelings" },
+  "Comida y bebida": { es: "Comida y bebida", en: "Food & drink" },
+  "Tiempo y clima": { es: "Tiempo y clima", en: "Weather" },
+  "Compras": { es: "Compras", en: "Shopping" },
+  "Salud": { es: "Salud", en: "Health" },
+  "Escuela": { es: "Escuela", en: "School" },
+  "Trabajo": { es: "Trabajo", en: "Work" },
+  "Naturaleza": { es: "Naturaleza", en: "Nature" },
+  "Direcciones": { es: "Direcciones", en: "Directions" },
+  "Viajes": { es: "Viajes", en: "Travel" },
+  "Casa": { es: "Casa", en: "Home" },
+  "Vida cotidiana": { es: "Vida cotidiana", en: "Daily life" },
+  "Amor y amistad": { es: "Amor y amistad", en: "Love & friendship" },
+  "Expresiones populares": { es: "Expresiones populares", en: "Popular expressions" }
+};
