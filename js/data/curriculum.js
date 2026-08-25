@@ -74,7 +74,7 @@ const CURRICULUM = [
         { gn: "Araapy", es: "Martes", en: "Tuesday" }, { gn: "Ára", es: "Día", en: "Day" },
         { gn: "Jasy", es: "Mes", en: "Month" }, { gn: "Áry", es: "Año", en: "Year" } ] },
       { title: { es: "Frases cotidianas", en: "Everyday phrases" }, vocab: [
-        { gn: "Cherénera", es: "Mi nombre es", en: "My name is" },
+        { gn: "Che réra", es: "Mi nombre", en: "My name" },
         { gn: "Mávapa nde réra", es: "¿Cómo te llamás?", en: "What's your name?" },
         { gn: "Aha", es: "Me voy", en: "I go" }, { gn: "Aju", es: "Vengo", en: "I come" },
         { gn: "Eju ko'ápe", es: "Vení aquí", en: "Come here" },
