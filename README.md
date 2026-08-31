@@ -7,6 +7,11 @@ Mbo'ehára (*"teacher"* in Guaraní) is a fun, gamified web app for learning **G
 The mascot is **Jasy Jateré**, the fair-haired forest spirit of Guaraní mythology, drawn as a friendly stick figure.
 
 ## Features
+- **Every lesson teaches before it tests.** Tapping a lesson opens a short **Learn** step —
+  a plain-language explanation written for someone who has never seen Guaraní, the new words
+  with their pronunciation guide and 🔊 button, example sentences, and a culture note — and
+  ends with a **Practicar →** button that starts the quiz. Read it once and a
+  *skip straight to practice* link appears on later visits.
 - **12 grades / Worlds**, unlocked in sequence as you progress (finish ~60% of a grade to unlock the next).
 - **Gamified**: XP, learner levels & ranks (Mitã → Mbo'ehára), hearts/lives per lesson, daily streak, and 1–3 stars per lesson based on accuracy.
 - **Varied exercises** auto-generated from each lesson's vocabulary: multiple choice (both directions), build-the-word, true/false, and matching.
@@ -37,7 +42,12 @@ No installation needed. Either:
 In the repo: **Settings → Pages → Build from branch → `main` / root**, then open the published URL.
 
 ## Tech
-Plain HTML, CSS and vanilla JavaScript. The curriculum lives in `js/data/curriculum.js`; the exercise engine in `js/game.js`; screens/navigation in `js/app.js`; progress persistence in `js/progress.js`; UI strings in `js/i18n.js`.
+Plain HTML, CSS and vanilla JavaScript. The curriculum lives in `js/data/curriculum.js`; the lesson notes (the Learn step's content) in `js/data/teach.js`; the Learn screen in `js/teach.js`; the exercise engine in `js/game.js`; screens/navigation in `js/app.js`; progress persistence in `js/progress.js`; UI strings in `js/i18n.js`.
+
+### Lesson notes coverage
+Lesson notes are written for **grades 1–3** so far (12 lessons). Any lesson without an entry in
+`js/data/teach.js` simply goes straight to the quiz, so the remaining grades can be filled in one
+at a time without touching the code.
 
 ## Pronunciation (Expresiones Comunes)
 Each of the 200 expressions has:

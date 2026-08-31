@@ -6,16 +6,21 @@ const Progress = {
   load() {
     try { this.data = JSON.parse(localStorage.getItem(this.KEY)); } catch (e) { this.data = null; }
     if (!this.data) {
-      this.data = { xp: 0, lessons: {}, streak: 0, lastDay: null };
+      this.data = this._blank();
     }
+    // `taught` was added after v1 shipped — fill it in for older saves instead of
+    // bumping the storage key, so nobody loses their XP over a new field.
+    if (!this.data.taught) this.data.taught = {};
     this._touchStreak();
     return this.data;
   },
 
+  _blank() { return { xp: 0, lessons: {}, taught: {}, streak: 0, lastDay: null }; },
+
   save() { localStorage.setItem(this.KEY, JSON.stringify(this.data)); },
 
   reset() {
-    this.data = { xp: 0, lessons: {}, streak: 0, lastDay: null };
+    this.data = this._blank();
     this.save();
   },
 
@@ -46,6 +51,19 @@ const Progress = {
 
   getLesson(gradeId, lessonIdx) {
     return this.data.lessons[this.lessonId(gradeId, lessonIdx)] || null;
+  },
+
+  // ----- Learn step: has the student read this lesson's notes at least once? -----
+  wasTaught(gradeId, lessonIdx) {
+    return !!(this.data.taught && this.data.taught[this.lessonId(gradeId, lessonIdx)]);
+  },
+
+  markTaught(gradeId, lessonIdx) {
+    if (!this.data.taught) this.data.taught = {};
+    if (this.data.taught[this.lessonId(gradeId, lessonIdx)]) return;
+    this.data.taught[this.lessonId(gradeId, lessonIdx)] = true;
+    this.addXp(5); // small reward for reading the lesson — once per lesson
+    this.save();
   },
 
   // record best stars for a lesson (1-3)

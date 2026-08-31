@@ -206,14 +206,20 @@ const App = {
     const lessons = g.lessons.map((l, i) => {
       const rec = Progress.getLesson(g.id, i);
       const stars = rec ? rec.stars : 0;
+      const notes = teachFor(g.id, i);
+      // Lessons with teaching notes open the Learn step first; label the button for it.
+      const cta = rec?.done ? i18n.t("world.review")
+                : (notes && !Progress.wasTaught(g.id, i)) ? i18n.t("teach.learn")
+                : i18n.t("lesson.start");
       return `
         <button class="lesson-card" data-i="${i}">
           <span class="lesson-num">${i + 1}</span>
           <span class="lesson-info">
-            <span class="lesson-title">${i18n.meaning(l.title)}</span>
+            <span class="lesson-title">${i18n.meaning(l.title)}${
+              notes ? ` <span class="lesson-badge" title="${i18n.t("teach.hasNotes")}">📖</span>` : ""}</span>
             <span class="stars">${"⭐".repeat(stars)}${"☆".repeat(3 - stars)}</span>
           </span>
-          <span class="lesson-go">${rec?.done ? i18n.t("world.review") : i18n.t("lesson.start")}</span>
+          <span class="lesson-go">${cta}</span>
         </button>`;
     }).join("");
 
@@ -230,8 +236,17 @@ const App = {
 
     document.getElementById("back").onclick = () => this.home();
     app.querySelectorAll(".lesson-card").forEach(b => {
-      b.onclick = () => Game.start(g, +b.dataset.i, () => { this.grade(gradeIdx); this.refreshTopbar(); });
+      b.onclick = () => this.openLesson(g, +b.dataset.i, gradeIdx);
     });
+  },
+
+  // Learn → Practice. Lessons without teaching notes go straight to the quiz.
+  openLesson(g, lessonIdx, gradeIdx) {
+    const exit = () => { this.grade(gradeIdx); this.refreshTopbar(); };
+    // refresh first: reading the notes may have just awarded XP
+    const practice = () => { this.refreshTopbar(); Game.start(g, lessonIdx, exit); };
+    if (teachFor(g.id, lessonIdx)) Teach.start(g, lessonIdx, exit, practice);
+    else practice();
   },
 
   // ---------- Profile ----------
