@@ -169,7 +169,7 @@ const Teach = {
         </div>
       </div>
       <div class="teach-ready">
-        <img src="assets/mascot.svg" class="teach-mascot" alt="">
+        <img src="assets/mascot.png" class="teach-mascot" alt="">
         <p>${i18n.t("teach.ready")}</p>
       </div>`;
   }

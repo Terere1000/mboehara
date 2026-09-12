@@ -4,7 +4,7 @@
 
 Mbo'ehára (*"teacher"* in Guaraní) is a fun, gamified web app for learning **Guaraní**, the co-official native language of Paraguay. Its 12 levels mirror how Guaraní is taught in Paraguayan schools — one "World" per grade, from 1st through 12th — following the MEC *Ñe'ẽ* program progression.
 
-The mascot is **Jasy Jateré**, the fair-haired forest spirit of Guaraní mythology, drawn as a friendly stick figure.
+The mascot is a **tucán (tukã)** in glasses — the teacher the name *Mbo'ehára* refers to. Fittingly, the word *toucan* itself comes from Tupí-Guaraní.
 
 ## Features
 - **Every lesson teaches before it tests.** Tapping a lesson opens a short **Learn** step —
