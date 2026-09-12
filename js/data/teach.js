@@ -129,8 +129,8 @@ const TEACH = {
     ],
     culture: {
       title: { es: "Jasy Jateré, el duende de la siesta", en: "Jasy Jateré, the noon spirit" },
-      body: { es: "El personaje que te acompaña en esta app es Jasy Jateré, uno de los siete hijos míticos de Tau y Keraná. Su nombre lleva jasy (luna) adentro. La leyenda dice que se aparece a la hora de la siesta y se lleva a los chicos que no duermen — por eso en Paraguay la siesta se respeta.",
-              en: "The character keeping you company in this app is Jasy Jateré, one of the seven mythical children of Tau and Keraná. His name has jasy (moon) inside it. Legend says he appears at siesta time and carries off children who won't nap — which is why in Paraguay the siesta is taken seriously." }
+      body: { es: "La palabra jasy vive dentro del nombre de uno de los duendes más conocidos del Paraguay: Jasy Jateré, uno de los siete hijos míticos de Tau y Keraná. La leyenda dice que se aparece a la hora de la siesta y se lleva a los chicos que no duermen — por eso en Paraguay la siesta se respeta.",
+              en: "The word jasy lives inside the name of one of Paraguay's best-known forest spirits: Jasy Jateré, one of the seven mythical children of Tau and Keraná. Legend says he appears at siesta time and carries off children who won't nap — which is why in Paraguay the siesta is taken seriously." }
     }
   },
 

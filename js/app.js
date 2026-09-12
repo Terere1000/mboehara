@@ -58,7 +58,7 @@ const App = {
 
     app.innerHTML = `
       <section class="hero">
-        <img src="assets/mascot.svg" class="hero-mascot" alt="Jasy Jateré">
+        <img src="assets/mascot.png" class="hero-mascot" alt="Mbo'ehára">
         <div class="hero-text">
           <h1>Mbo'ehára</h1>
           <p data-i18n="hero.tagline">${i18n.t("hero.tagline")}</p>
@@ -257,7 +257,7 @@ const App = {
     app.innerHTML = `
       <section class="profile">
         <button class="back" id="back">←</button>
-        <img src="assets/mascot.svg" class="profile-mascot happy" alt="">
+        <img src="assets/mascot.png" class="profile-mascot" alt="">
         <h2>${i18n.t("profile.title")}</h2>
         <p class="rank">${i18n.meaning(rank)}</p>
         <div class="profile-grid">

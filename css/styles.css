@@ -29,7 +29,7 @@ body {
   position: sticky; top: 0; background: var(--bg); z-index: 10;
 }
 .brand { display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; }
-.brand-mascot { width: 30px; height: 40px; }
+.brand-mascot { height: 36px; width: auto; }
 .brand-name { font-size: 1.25rem; font-weight: 800; letter-spacing: -.5px; }
 .stats { display: flex; align-items: center; gap: 12px; }
 .stat { font-size: .95rem; font-weight: 600; }
@@ -45,7 +45,7 @@ body {
 
 /* ---------- Hero ---------- */
 .hero { display: flex; align-items: center; gap: 20px; justify-content: center; padding: 10px 0 20px; text-align: left; }
-.hero-mascot { width: 96px; height: 125px; }
+.hero-mascot { height: 118px; width: auto; }
 .hero h1 { font-size: 2rem; margin: 0 0 2px; letter-spacing: -1px; }
 .hero p { color: var(--muted); margin: 0; }
 .path-head h2 { font-size: 1.2rem; margin: 18px 0 2px; }
@@ -202,7 +202,7 @@ body {
 .feedback.show { opacity: 1; }
 .feedback.ok { color: var(--green); }
 .feedback.bad { color: var(--accent); }
-.fb-mascot { width: 34px; height: 44px; }
+.fb-mascot { height: 42px; width: auto; }
 .lesson-actions { margin-top: 10px; }
 
 /* buttons */
@@ -218,7 +218,7 @@ body {
 
 /* complete */
 .complete { text-align: center; padding: 24px 0; }
-.complete-mascot { width: 110px; height: 143px; }
+.complete-mascot { height: 130px; width: auto; }
 .complete h2 { font-size: 1.7rem; margin: 10px 0 4px; }
 .complete-stats { display: inline-flex; gap: 26px; background: #f8f8f8; border-radius: 14px;
   padding: 16px 28px; margin: 14px 0 22px; }
@@ -229,7 +229,7 @@ body {
 /* profile */
 .profile { text-align: center; }
 .profile .back { float: left; }
-.profile-mascot { width: 100px; height: 130px; }
+.profile-mascot { height: 118px; width: auto; }
 .profile h2 { margin: 6px 0 2px; }
 .rank { color: var(--accent); font-weight: 800; margin: 0 0 18px; }
 .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 12px; }
@@ -238,9 +238,6 @@ body {
 .pcard .lbl { color: var(--muted); font-size: .8rem; }
 .profile .btn { max-width: 280px; margin: 24px auto 0; }
 
-/* mascot expressions */
-.happy .mouth, .fb-mascot.happy { }
-.sad .face-happy path { d: path("M88 74 q12 -10 24 0"); }
 
 /* ---------- Learn step (teaching pages before the quiz) ---------- */
 .teach { max-width: 620px; margin: 0 auto; }
@@ -285,7 +282,7 @@ body {
 .teach-culture-icon { font-size: 1.5rem; line-height: 1.2; flex: none; }
 .teach-ready { display: flex; align-items: center; gap: 14px; justify-content: center;
   margin: 24px 0 4px; color: var(--muted); font-weight: 600; text-align: left; }
-.teach-mascot { width: 46px; height: 60px; flex: none; }
+.teach-mascot { height: 54px; width: auto; flex: none; }
 
 .teach-actions { display: flex; gap: 10px; margin-top: 26px; }
 .teach-actions .btn-ghost { max-width: 140px; }

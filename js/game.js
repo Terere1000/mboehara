@@ -239,12 +239,12 @@ const Game = {
       s.correct++;
       Progress.addXp(10);
       fb.className = "feedback show ok";
-      fb.innerHTML = `<img src="assets/mascot.svg" class="fb-mascot happy" alt=""><span>${i18n.t("fb.correct")}</span>`;
+      fb.innerHTML = `<img src="assets/mascot.png" class="fb-mascot" alt=""><span>${i18n.t("fb.correct")}</span>`;
     } else {
       s.hearts--;
       fb.className = "feedback show bad";
       const ans = word ? `<b>${word.gn}</b> — ${i18n.meaning(word)}` : "";
-      fb.innerHTML = `<img src="assets/mascot.svg" class="fb-mascot sad" alt=""><span>${i18n.t("fb.wrong")} ${ans}</span>`;
+      fb.innerHTML = `<img src="assets/mascot-sad.png" class="fb-mascot" alt="" onerror="this.remove()"><span>${i18n.t("fb.wrong")} ${ans}</span>`;
     }
 
     if (btn) {
@@ -271,7 +271,7 @@ const Game = {
     if (!passed) {
       app.innerHTML = `
         <section class="complete fail">
-          <img src="assets/mascot.svg" class="complete-mascot sad" alt="">
+          <img src="assets/mascot-sad.png" class="complete-mascot" alt="" onerror="this.remove()">
           <h2>${i18n.t("complete.failTitle")}</h2>
           <div class="complete-actions">
             <button class="btn btn-primary" id="retry">${i18n.t("complete.retry")}</button>
@@ -290,7 +290,7 @@ const Game = {
 
     app.innerHTML = `
       <section class="complete">
-        <img src="assets/mascot.svg" class="complete-mascot happy" alt="">
+        <img src="assets/mascot.png" class="complete-mascot" alt="">
         <h2>${i18n.t("complete.title")}</h2>
         <div class="stars big">${"⭐".repeat(stars)}${"☆".repeat(3 - stars)}</div>
         <div class="complete-stats">

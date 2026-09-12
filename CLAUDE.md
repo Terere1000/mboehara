@@ -28,7 +28,10 @@ else browser TTS (Spanish voice), and records via MediaRecorder. Loaded before `
 init'd in `App.init`. Recording needs a secure context (localhost / https).
 
 Other files: `css/styles.css` (white minimalist theme, CSS variables in `:root`),
-`assets/mascot.svg` (Jasy Jateré stick-figure mascot).
+`assets/mascot.png` (the toucan teacher — glasses, cut out on transparency).
+`assets/mascot-sad.png` is the wrong-answer variant; every `<img>` that points at it carries
+`onerror="this.remove()"`, so the app degrades gracefully if the file is missing.
+Mascot CSS sets `height` only with `width: auto` — never both, or the art gets squashed.
 
 ## Data shape
 - A grade: `{ id, num, color, icon, title:{es,en}, lessons:[...] }`
