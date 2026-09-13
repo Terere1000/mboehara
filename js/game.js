@@ -239,7 +239,7 @@ const Game = {
       s.correct++;
       Progress.addXp(10);
       fb.className = "feedback show ok";
-      fb.innerHTML = `<img src="assets/mascot.png" class="fb-mascot" alt=""><span>${i18n.t("fb.correct")}</span>`;
+      fb.innerHTML = `<img src="assets/mascot-ok.png" class="fb-mascot" alt="" onerror="this.onerror=null;this.src='assets/mascot.png'"><span>${i18n.t("fb.correct")}</span>`;
     } else {
       s.hearts--;
       fb.className = "feedback show bad";
