@@ -290,7 +290,8 @@ const Game = {
 
     app.innerHTML = `
       <section class="complete">
-        <img src="assets/mascot.png" class="complete-mascot" alt="">
+        <img src="assets/mascot-win.png" class="complete-mascot" alt=""
+             onerror="this.onerror=null;this.src='assets/mascot.png'">
         <h2>${i18n.t("complete.title")}</h2>
         <div class="stars big">${"⭐".repeat(stars)}${"☆".repeat(3 - stars)}</div>
         <div class="complete-stats">
