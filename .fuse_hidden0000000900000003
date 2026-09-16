@@ -31,7 +31,10 @@
 
   <footer class="footer">
     <span data-i18n="footer.note"></span>
-    <a class="footer-contact" href="mailto:mbaeteko@mboehara.com.py">mbaeteko@mboehara.com.py</a>
+    <span class="footer-contact">
+      <span data-i18n="footer.contact"></span>
+      <a href="mailto:mbaeteko@mboehara.com.py">mbaeteko@mboehara.com.py</a>
+    </span>
   </footer>
 
   <!-- Data -->
