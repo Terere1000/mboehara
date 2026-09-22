@@ -110,8 +110,10 @@ const CURRICULUM = [
     lessons: [
       { title: { es: "Pronombres", en: "Pronouns" }, vocab: [
         { gn: "Che", es: "Yo", en: "I" }, { gn: "Nde", es: "Tú / vos", en: "You" },
-        { gn: "Ha'e", es: "Él / ella", en: "He / she" }, { gn: "Ñande", es: "Nosotros (incl.)", en: "We (incl.)" },
-        { gn: "Ore", es: "Nosotros (excl.)", en: "We (excl.)" }, { gn: "Peẽ", es: "Ustedes", en: "You (pl.)" },
+        { gn: "Ha'e", es: "Él / ella", en: "He / she", pron: "HA-'e" },
+        { gn: "Ñande", es: "Nosotros (incl.)", en: "We (incl.)", pron: "ÑAN-de" },
+        { gn: "Ore", es: "Nosotros (excl.)", en: "We (excl.)", pron: "O-re" },
+        { gn: "Peẽ", es: "Ustedes", en: "You (pl.)" },
         { gn: "Ha'ekuéra", es: "Ellos", en: "They" } ] },
       { title: { es: "Posesivos", en: "Possessives" }, vocab: [
         { gn: "Che róga", es: "Mi casa", en: "My house" }, { gn: "Nde róga", es: "Tu casa", en: "Your house" },
@@ -236,7 +238,7 @@ const CURRICULUM = [
         { gn: "Joaju", es: "Unión", en: "Unity" } ] },
       { title: { es: "Cultura guaraní", en: "Guaraní culture" }, vocab: [
         { gn: "Tereré", es: "Tereré", en: "Tereré (cold mate)" }, { gn: "Ka'a", es: "Yerba mate", en: "Yerba mate" },
-        { gn: "Ñande reko", es: "Nuestra cultura / folclore", en: "Our culture / folklore" },
+        { gn: "Ñande reko", es: "Nuestra cultura / folclore", en: "Our culture / folklore", pron: "ÑAN-de re-KO" },
         { gn: "Pohã ñana", es: "Hierbas medicinales", en: "Medicinal herbs" },
         { gn: "Jeroky", es: "Danza", en: "Dance" } ] }
     ]
@@ -280,8 +282,8 @@ const CURRICULUM = [
         { gn: "Tetãygua", es: "Ciudadano", en: "Citizen" },
         { gn: "Aty guasu", es: "Asamblea", en: "Assembly" } ] },
       { title: { es: "Identidad", en: "Identity" }, vocab: [
-        { gn: "Ñane retã", es: "Nuestra patria", en: "Our homeland" },
-        { gn: "Ñane ñe'ẽ", es: "Nuestra lengua", en: "Our language" },
+        { gn: "Ñane retã", es: "Nuestra patria", en: "Our homeland", pron: "ÑA-ne re-TÃ" },
+        { gn: "Ñane ñe'ẽ", es: "Nuestra lengua", en: "Our language", pron: "ÑA-ne ñe-'Ẽ" },
         { gn: "Teko teete", es: "Identidad", en: "Identity" },
         { gn: "Jeroviapy", es: "Esperanza / fe", en: "Hope / faith" },
         { gn: "Tesãi", es: "Salud", en: "Health" } ] }

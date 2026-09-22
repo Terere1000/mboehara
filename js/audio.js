@@ -8,6 +8,7 @@
 const Pron = {
   V: "aeiouyáéíóúãẽĩõũỹÿ",
   ACUTE: "áéíóúÿ",
+  NASAL: "ãẽĩõũỹ",
   isV(c) { return this.V.indexOf(c.toLowerCase()) >= 0; },
 
   // Split a word into (roughly CV) syllables. Guaraní is highly phonetic and mostly
@@ -18,8 +19,12 @@ const Pron = {
     let onset = "";
     for (let i = 0; i < word.length; i++) {
       const c = word[i];
-      if (this.isV(c)) { s.push(onset + c); onset = ""; }
-      else { onset += c; }
+      if (this.isV(c)) {
+        // In gua/kué the u is a glide belonging to the onset, not its own syllable:
+        // kuarahy → kua-ra-hy, ha'ekuéra → ha-'e-kué-ra.
+        if (c === "u" && /[gk]$/.test(onset) && this.isV(word[i + 1] || "")) { onset += c; continue; }
+        s.push(onset + c); onset = "";
+      } else { onset += c; }
     }
     if (onset) { if (s.length) s[s.length - 1] += onset; else s.push(onset); }
     return s.length ? s : [word];
@@ -27,22 +32,42 @@ const Pron = {
 
   respell(sy) { return sy.replace(/y/g, "ɨ"); }, // letter y = high central vowel
 
+  // Which syllable carries the stress, in order of reliability.
+  _stressIndex(syl) {
+    // 1. A written acute accent always marks the stressed syllable.
+    for (let k = 0; k < syl.length; k++) {
+      for (let j = 0; j < syl[k].length; j++) {
+        if (this.ACUTE.indexOf(syl[k][j]) >= 0) return k;
+      }
+    }
+    // 2. A lone nasal tilde marks it too (mokõi → mo-KÕ-i, ko'ẽro → ko-'Ẽ-ro).
+    //    Only when there's exactly one, since several tildes give no clue.
+    const nasal = [];
+    for (let k = 0; k < syl.length; k++) {
+      for (let j = 0; j < syl[k].length; j++) {
+        if (this.NASAL.indexOf(syl[k][j]) >= 0) { nasal.push(k); break; }
+      }
+    }
+    if (nasal.length === 1) return nasal[0];
+    // 3. Default: Guaraní words are stressed on the last syllable.
+    return syl.length - 1;
+  },
+
   guideWord(word) {
     if (!word) return "";
     const syl = this.syllabify(word);
-    // Stress: the acute-accented syllable if present, else the last (Guaraní default).
-    let stress = -1;
-    for (let k = 0; k < syl.length && stress < 0; k++) {
-      for (let j = 0; j < syl[k].length; j++) {
-        if (this.ACUTE.indexOf(syl[k][j]) >= 0) { stress = k; break; }
-      }
-    }
-    if (stress < 0) stress = syl.length - 1;
+    // Don't mark stress on one-syllable words — in a phrase they're usually unstressed,
+    // and shouting every short word (CHE SY) makes the guide harder to read.
+    if (syl.length === 1) return this.respell(syl[0]);
+    const stress = this._stressIndex(syl);
     return syl.map((sy, k) => { const r = this.respell(sy); return k === stress ? r.toUpperCase() : r; }).join("-");
   },
 
-  guide(text) {
-    return "[" + text.split(/\s+/).map(w => this.guideWord(w)).join(" ") + "]";
+  // `override` is an optional hand-written guide (a vocab/expression's `pron` field),
+  // used verbatim when the generated one gets the stress wrong.
+  guide(text, override) {
+    if (override) return "[" + override + "]";
+    return "[" + String(text).split(/\s+/).map(w => this.guideWord(w)).join(" ") + "]";
   }
 };
 

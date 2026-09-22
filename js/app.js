@@ -147,7 +147,7 @@ const App = {
         ? list.map(e => `
             <article class="expr-card" data-id="${e.id}">
               <p class="expr-gn">${e.guarani}</p>
-              <p class="expr-pron">${Pron.guide(e.guarani)}</p>
+              <p class="expr-pron">${Pron.guide(e.guarani, e.pron)}</p>
               <p class="expr-es">${exprMeaning(e)}</p>
               <span class="expr-badge" style="--badge:${catColor(e.category)}">${catLabel(e.category)}</span>
             </article>`).join("")

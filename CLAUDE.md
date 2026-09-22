@@ -39,7 +39,12 @@ Mascot CSS sets `height` only with `width: auto` — never both, or the art gets
 
 ## Data shape
 - A grade: `{ id, num, color, icon, title:{es,en}, lessons:[...] }`
-- A lesson: `{ title:{es,en}, vocab:[ {gn, es, en}, ... ] }`
+- A lesson: `{ title:{es,en}, vocab:[ {gn, es, en, pron?}, ... ] }`
+- `pron` is an **optional** hand-written phonetic guide that overrides the one `Pron.guide()`
+  generates (written without brackets, e.g. `pron: "ÑAN-de re-KO"`). Only add it where the
+  generator gets the stress wrong — it already handles written accents, a lone nasal tilde,
+  and gua/kué glides. The same optional field works on `TEACH` examples and, as a 4th column,
+  on expression rows in `js/data/expressions.js`.
 - Exercises are **generated** from `vocab` by `Game.build()` — you don't author exercises by hand.
   Types: multiple choice (both directions), build-the-word, true/false, matching.
 - Lesson notes (`TEACH["g1:0"]`): `{ focus:{es,en}, intro:[{es,en}], points:[{es,en}],

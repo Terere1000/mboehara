@@ -112,7 +112,7 @@ const Teach = {
       return `
         <article class="teach-word">
           <p class="teach-gn">${this._esc(w.gn)}</p>
-          <p class="teach-pron">${Pron.guide(w.gn)}</p>
+          <p class="teach-pron">${Pron.guide(w.gn, w.pron)}</p>
           <p class="teach-mean">${this._esc(i18n.meaning(w))}</p>
         </article>`;
     }).join("");
@@ -129,7 +129,7 @@ const Teach = {
     const rows = s.notes.examples.map(ex => `
       <article class="teach-ex">
         <p class="teach-ex-gn">${this._esc(ex.gn)}</p>
-        <p class="teach-pron">${Pron.guide(this._plain(ex.gn))}</p>
+        <p class="teach-pron">${Pron.guide(this._plain(ex.gn), ex.pron)}</p>
         <p class="teach-mean">${this._esc(i18n.meaning(ex))}</p>
       </article>`).join("");
 
