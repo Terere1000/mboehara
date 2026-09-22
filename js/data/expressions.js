@@ -93,7 +93,7 @@ const _EXPRESSIONS_BY_CATEGORY = {
     ["Roguerohory", "Te aprecio", "I appreciate you"]
   ],
   "Comida y bebida": [
-    ["Añembyahýi", "Tengo hambre", "I'm hungry"],
+    ["Che ñembyahýi", "Tengo hambre", "I'm hungry"],
     ["Che yuhéi", "Tengo sed", "I'm thirsty"],
     ["Ha'úta", "Voy a comer", "I'm going to eat"],
     ["Aipota y", "Quiero agua", "I want water"],

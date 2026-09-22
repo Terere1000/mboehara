@@ -124,11 +124,11 @@ const CURRICULUM = [
         { gn: "Moõpa", es: "¿Dónde?", en: "Where?" }, { gn: "Araka'épa", es: "¿Cuándo?", en: "When?" },
         { gn: "Mba'érepa", es: "¿Por qué?", en: "Why?" }, { gn: "Mboýpa", es: "¿Cuántos?", en: "How many?" } ] },
       { title: { es: "Verbos chendales", en: "Chendal verbs" }, vocab: [
-        { gn: "Cheróga", es: "Tengo casa", en: "I have a house" },
-        { gn: "Chembyaju", es: "Estoy cansado", en: "I'm tired" },
-        { gn: "Cherasy", es: "Estoy enfermo", en: "I'm sick" },
-        { gn: "Chevy'a", es: "Estoy feliz", en: "I'm happy" },
-        { gn: "Cheñembyahýi", es: "Tengo hambre", en: "I'm hungry" } ] }
+        { gn: "Che róga", es: "Tengo casa", en: "I have a house" },
+        { gn: "Che kane'õ", es: "Estoy cansado", en: "I'm tired" },
+        { gn: "Che rasy", es: "Estoy enfermo", en: "I'm sick" },
+        { gn: "Che vy'a", es: "Estoy feliz", en: "I'm happy" },
+        { gn: "Che ñembyahýi", es: "Tengo hambre", en: "I'm hungry" } ] }
     ]
   },
   {

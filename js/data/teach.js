@@ -583,8 +583,8 @@ const TEACH = {
     intro: [
       { es: "Esta es una de las ideas más importantes de todo el guaraní. El grado 4 te dio los verbos areales, los de acción, con a-, re-, o-. Existe una segunda familia entera, los chendales, que no aceptan a-: se conjugan con los mismos prefijos posesivos che-, nde-, i-/h-. El nombre sale de che-nde-i.",
         en: "This is one of the most important ideas in all of Guaraní. Grade 4 gave you the areal verbs, the action ones, with a-, re-, o-. There's a whole second family, the chendal verbs, which don't take a-: they conjugate with the very same possessive prefixes che-, nde-, i-/h-. The name comes from che-nde-i." },
-      { es: "Cherasy no está armado como akaru. Literalmente dice «mi dolor», y se traduce «estoy enfermo». Por eso la conjugación es che rasy, nde rasy, hasy — exactamente la misma maquinaria de che róga, nde róga, hóga.",
-        en: "Cherasy isn't built like akaru. It literally says \"my ache\", and translates as \"I'm sick\". That's why the conjugation runs che rasy, nde rasy, hasy — exactly the same machinery as che róga, nde róga, hóga." },
+      { es: "Che rasy no está armado como akaru. Literalmente dice «mi dolor», y se traduce «estoy enfermo». Por eso la conjugación es che rasy, nde rasy, hasy — exactamente la misma maquinaria de che róga, nde róga, hóga.",
+        en: "Che rasy isn't built like akaru. It literally says \"my ache\", and translates as \"I'm sick\". That's why the conjugation runs che rasy, nde rasy, hasy — exactly the same machinery as che róga, nde róga, hóga." },
       { es: "Esto trae una consecuencia enorme: el guaraní no tiene el verbo «tener». Che róga no significa solo «mi casa», también significa «tengo casa» — «mi casa existe». Los estados, los sentimientos y la posesión usan todos esta familia.",
         en: "This has an enormous consequence: Guaraní has no verb \"to have\". Che róga doesn't just mean \"my house\", it also means \"I have a house\" — \"my house exists\". States, feelings and possession all use this family." }
     ],
@@ -595,9 +595,9 @@ const TEACH = {
       { es: "Se niegan igual que los otros: nd- … -i.", en: "They negate the same way: nd- … -i." }
     ],
     examples: [
-      { gn: "Cherasy ko ára", es: "Hoy estoy enfermo", en: "I'm sick today" },
+      { gn: "Che rasy ko ára", es: "Hoy estoy enfermo", en: "I'm sick today" },
       { gn: "Nde kane'õpa?", es: "¿Estás cansado?", en: "Are you tired?" },
-      { gn: "Cheñembyahýi ha chevy'a", es: "Tengo hambre y estoy contento", en: "I'm hungry and I'm happy" }
+      { gn: "Che ñembyahýi ha che vy'a", es: "Tengo hambre y estoy contento", en: "I'm hungry and I'm happy" }
     ],
     culture: {
       title: { es: "Sentir es tener", en: "To feel is to have" },
@@ -1057,18 +1057,18 @@ const TEACH = {
         en: "Grade 3 promised this and here it lands: Guaraní emotions live in the py'a, the belly area. Py'aro is anger (ro = bitter, \"bitter py'a\"), py'apy is sadness and py'aguasu is courage, \"big py'a\". One body part generates the whole emotional vocabulary." },
       { es: "Mborayhu, el amor, es la palabra más grande de la lista. Sale del verbo rayhu (amar): ahayhu es «amo». Y no nombra solamente el amor romántico — es también el afecto, la solidaridad y el cuidado mutuo.",
         en: "Mborayhu, love, is the biggest word on the list. It comes from the verb rayhu (to love): ahayhu is \"I love\". And it doesn't name romantic love alone — it also covers affection, solidarity and mutual care." },
-      { es: "Para sentir usás la familia chendal del grado 5: chevy'a (estoy contento), cherasy (me duele). No «sos» tu emoción: la tenés, te ocurre.",
-        en: "To feel, you use grade 5's chendal family: chevy'a (I'm happy), cherasy (I hurt). You don't *be* your emotion: you have it, it happens to you." }
+      { es: "Para sentir usás la familia chendal del grado 5: che vy'a (estoy contento), che rasy (me duele). No «sos» tu emoción: la tenés, te ocurre.",
+        en: "To feel, you use grade 5's chendal family: che vy'a (I'm happy), che rasy (I hurt). You don't *be* your emotion: you have it, it happens to you." }
     ],
     points: [
       { es: "py'a = vientre; ahí viven las emociones.", en: "py'a = belly; that's where emotions live." },
       { es: "py'aro (enojo) · py'apy (tristeza) · py'aguasu (valentía).", en: "py'aro (anger) · py'apy (sadness) · py'aguasu (courage)." },
       { es: "mborayhu viene de rayhu: ahayhu, yo amo.", en: "mborayhu comes from rayhu: ahayhu, I love." },
-      { es: "Se sienten con la familia chendal: chevy'a, cherasy.", en: "You feel them with the chendal family: chevy'a, cherasy." }
+      { es: "Se sienten con la familia chendal: che vy'a, che rasy.", en: "You feel them with the chendal family: che vy'a, che rasy." }
     ],
     examples: [
       { gn: "Rohayhu", es: "Te amo", en: "I love you" },
-      { gn: "Chevy'a rohechávo", es: "Me alegra verte", en: "I'm glad to see you" },
+      { gn: "Che vy'a rohechávo", es: "Me alegra verte", en: "I'm glad to see you" },
       { gn: "Akyhyje pyharépe", es: "Tengo miedo de noche", en: "I'm afraid at night" }
     ],
     culture: {
