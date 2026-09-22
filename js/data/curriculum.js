@@ -93,7 +93,7 @@ const CURRICULUM = [
         { gn: "Tembi'u", es: "Comida", en: "Food" }, { gn: "Mandi'o", es: "Mandioca", en: "Cassava" },
         { gn: "Avati", es: "Maíz", en: "Corn" }, { gn: "So'o", es: "Carne", en: "Meat" },
         { gn: "Kesu", es: "Queso", en: "Cheese" }, { gn: "Kamby", es: "Leche", en: "Milk" },
-        { gn: "Mboka", es: "Pan / chipa", en: "Bread" } ] },
+        { gn: "Mbujape", es: "Pan", en: "Bread" } ] },
       { title: { es: "La casa", en: "The home" }, vocab: [
         { gn: "Óga", es: "Casa", en: "House" }, { gn: "Okẽ", es: "Puerta", en: "Door" },
         { gn: "Ovetã", es: "Ventana", en: "Window" }, { gn: "Apyka", es: "Silla", en: "Chair" },
@@ -236,7 +236,7 @@ const CURRICULUM = [
         { gn: "Joaju", es: "Unión", en: "Unity" } ] },
       { title: { es: "Cultura guaraní", en: "Guaraní culture" }, vocab: [
         { gn: "Tereré", es: "Tereré", en: "Tereré (cold mate)" }, { gn: "Ka'a", es: "Yerba mate", en: "Yerba mate" },
-        { gn: "Mba'e mbarakaja", es: "Folclore", en: "Folklore" },
+        { gn: "Ñande reko", es: "Nuestra cultura / folclore", en: "Our culture / folklore" },
         { gn: "Pohã ñana", es: "Hierbas medicinales", en: "Medicinal herbs" },
         { gn: "Jeroky", es: "Danza", en: "Dance" } ] }
     ]
