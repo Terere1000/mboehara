@@ -141,7 +141,7 @@ const CURRICULUM = [
         { gn: "Pyahu", es: "Nuevo", en: "New" }, { gn: "Tuja", es: "Viejo", en: "Old" } ] },
       { title: { es: "El tiempo (clima)", en: "Weather" }, vocab: [
         { gn: "Ama", es: "Lluvia", en: "Rain" }, { gn: "Yvytu", es: "Viento", en: "Wind" },
-        { gn: "Roy", es: "Frío", en: "Cold" }, { gn: "Aku", es: "Calor", en: "Heat" },
+        { gn: "Ro'y", es: "Frío", en: "Cold" }, { gn: "Aku", es: "Calor", en: "Heat" },
         { gn: "Arai", es: "Nube", en: "Cloud" }, { gn: "Ára porã", es: "Buen tiempo", en: "Good weather" } ] },
       { title: { es: "Naturaleza", en: "Nature" }, vocab: [
         { gn: "Yvyra", es: "Árbol", en: "Tree" }, { gn: "Yvoty", es: "Flor", en: "Flower" },
@@ -152,7 +152,7 @@ const CURRICULUM = [
         { gn: "Yvoty porã", es: "Flor linda", en: "Pretty flower" },
         { gn: "Jagua michĩ", es: "Perro pequeño", en: "Small dog" },
         { gn: "Óga pyahu", es: "Casa nueva", en: "New house" },
-        { gn: "Ára roy", es: "Día frío", en: "Cold day" } ] }
+        { gn: "Ára ro'y", es: "Día frío", en: "Cold day" } ] }
     ]
   },
   {
@@ -165,7 +165,8 @@ const CURRICULUM = [
         { gn: "Amba'apo kuri", es: "Trabajé", en: "I worked" } ] },
       { title: { es: "Futuro (-ta)", en: "Future (-ta)" }, vocab: [
         { gn: "Akaruta", es: "Comeré", en: "I will eat" }, { gn: "Ahata", es: "Iré", en: "I will go" },
-        { gn: "Añe'ẽta", es: "Hablaré", en: "I will speak" }, { gn: "Aketa", es: "Dormiré", en: "I will sleep" },
+        { gn: "Añe'ẽta", es: "Hablaré", en: "I will speak", pron: "a-ñe-'ẽ-TA" },
+        { gn: "Aketa", es: "Dormiré", en: "I will sleep" },
         { gn: "Amba'apóta", es: "Trabajaré", en: "I will work" } ] },
       { title: { es: "Verbos nasales", en: "Nasal verbs" }, vocab: [
         { gn: "Añemongeta", es: "Converso", en: "I converse" },
@@ -197,7 +198,8 @@ const CURRICULUM = [
       { title: { es: "Lugares", en: "Places" }, vocab: [
         { gn: "Mbo'ehao", es: "Escuela", en: "School" }, { gn: "Tava", es: "Pueblo / ciudad", en: "Town" },
         { gn: "Ñemuha", es: "Mercado / tienda", en: "Market / shop" },
-        { gn: "Tupão", es: "Iglesia", en: "Church" }, { gn: "Tape", es: "Camino", en: "Road" } ] }
+        { gn: "Tupão", es: "Iglesia", en: "Church", pron: "tu-PÃO" },
+        { gn: "Tape", es: "Camino", en: "Road" } ] }
     ]
   },
   {
@@ -205,9 +207,9 @@ const CURRICULUM = [
     title: { es: "Oraciones y narración", en: "Sentences & narration" },
     lessons: [
       { title: { es: "Conjunciones", en: "Conjunctions" }, vocab: [
-        { gn: "ha", es: "y", en: "and" }, { gn: "térã", es: "o", en: "or" },
-        { gn: "ha katu", es: "pero", en: "but" }, { gn: "upéicharõ", es: "entonces", en: "then" },
-        { gn: "mba'ére", es: "porque", en: "because" } ] },
+        { gn: "Ha", es: "Y", en: "And" }, { gn: "Térã", es: "O", en: "Or" },
+        { gn: "Ha katu", es: "Pero", en: "But" }, { gn: "Upéicharõ", es: "Entonces", en: "Then" },
+        { gn: "Mba'ére", es: "Porque", en: "Because" } ] },
       { title: { es: "Conectores de relato", en: "Story connectors" }, vocab: [
         { gn: "Peteĩ jey", es: "Una vez", en: "Once" }, { gn: "Upérõ", es: "En ese momento", en: "At that time" },
         { gn: "Ipahápe", es: "Al final", en: "In the end" }, { gn: "Riré", es: "Después de", en: "After" },
@@ -227,7 +229,8 @@ const CURRICULUM = [
     title: { es: "Ñe'ẽpoty y ñe'ẽnga", en: "Poetry & proverbs" },
     lessons: [
       { title: { es: "Poesía (ñe'ẽpoty)", en: "Poetry (ñe'ẽpoty)" }, vocab: [
-        { gn: "Ñe'ẽpoty", es: "Poesía", en: "Poetry" }, { gn: "Purahéi", es: "Canción", en: "Song" },
+        { gn: "Ñe'ẽpoty", es: "Poesía", en: "Poetry", pron: "ñe-'ẽ-po-TƗ" },
+        { gn: "Purahéi", es: "Canción", en: "Song" },
         { gn: "Ñe'ẽ", es: "Palabra / lengua", en: "Word / language" },
         { gn: "Mborayhu rape", es: "Camino del amor", en: "Path of love" },
         { gn: "Yvága resa", es: "Estrella (lit. ojo del cielo)", en: "Star (lit. eye of sky)" } ] },
@@ -250,8 +253,8 @@ const CURRICULUM = [
       { title: { es: "Guaraniete vs jopara", en: "Guaraniete vs jopara" }, vocab: [
         { gn: "Guaraniete", es: "Guaraní puro", en: "Pure Guaraní" },
         { gn: "Jopara", es: "Mezcla guaraní-español", en: "Guaraní-Spanish mix" },
-        { gn: "Ñe'ẽtekuaa", es: "Gramática", en: "Grammar" },
-        { gn: "Ñe'ẽndy", es: "Vocabulario", en: "Vocabulary" },
+        { gn: "Ñe'ẽtekuaa", es: "Gramática", en: "Grammar", pron: "ñe-'ẽ-te-kua-A" },
+        { gn: "Ñe'ẽndy", es: "Vocabulario", en: "Vocabulary", pron: "ñe-'ẽ-NDƗ" },
         { gn: "Haipy", es: "Escrito / texto", en: "Text" } ] },
       { title: { es: "Escritura formal", en: "Formal writing" }, vocab: [
         { gn: "Kuatiañe'ẽ", es: "Carta / documento", en: "Letter / document" },
@@ -261,7 +264,7 @@ const CURRICULUM = [
         { gn: "Ñe'ẽtéva", es: "Verbo", en: "Verb" } ] },
       { title: { es: "Variantes regionales", en: "Regional variants" }, vocab: [
         { gn: "Ñe'ẽ joja", es: "Lengua estándar", en: "Standard language" },
-        { gn: "Tetãgua ñe'ẽ", es: "Habla local", en: "Local speech" },
+        { gn: "Tetãgua ñe'ẽ", es: "Habla local", en: "Local speech", pron: "te-tã-GUA ñe-'Ẽ" },
         { gn: "Mbya", es: "Guaraní mbya", en: "Mbya Guaraní" },
         { gn: "Ava ñe'ẽ", es: "Lengua del pueblo", en: "People's language" } ] }
     ]
@@ -279,7 +282,7 @@ const CURRICULUM = [
       { title: { es: "Sociedad", en: "Society" }, vocab: [
         { gn: "Tekojoja", es: "Justicia / igualdad", en: "Justice / equality" },
         { gn: "Sãso", es: "Libertad", en: "Freedom" }, { gn: "Mbojoaju", es: "Integración", en: "Integration" },
-        { gn: "Tetãygua", es: "Ciudadano", en: "Citizen" },
+        { gn: "Tetãygua", es: "Ciudadano", en: "Citizen", pron: "te-tã-ɨ-GUA" },
         { gn: "Aty guasu", es: "Asamblea", en: "Assembly" } ] },
       { title: { es: "Identidad", en: "Identity" }, vocab: [
         { gn: "Ñane retã", es: "Nuestra patria", en: "Our homeland", pron: "ÑA-ne re-TÃ" },

@@ -19,13 +19,18 @@ const Pron = {
     let onset = "";
     for (let i = 0; i < word.length; i++) {
       const c = word[i];
-      if (this.isV(c)) {
-        // In gua/kué the u is a glide belonging to the onset, not its own syllable:
-        // kuarahy → kua-ra-hy, ha'ekuéra → ha-'e-kué-ra. Only when a vowel follows —
-        // word-final -ku/-gu is a plain syllable (haku → ha-ku).
-        if (c === "u" && /[gk]$/.test(onset) && this.isV(word[i + 1])) { onset += c; continue; }
-        s.push(onset + c); onset = "";
-      } else { onset += c; }
+      if (!this.isV(c)) { onset += c; continue; }
+      // In gua/kué the u is a glide belonging to the onset, not its own syllable:
+      // kuarahy → kua-ra-hy, ha'ekuéra → ha-'e-kué-ra. Only when a vowel follows —
+      // word-final -ku/-gu is a plain syllable (haku → ha-ku).
+      if (c === "u" && /[gk]$/.test(onset) && this.isV(word[i + 1])) { onset += c; continue; }
+      let syl = onset + c;
+      onset = "";
+      // Falling diphthong: an i/y that doesn't open a syllable of its own closes this
+      // one instead — vai, oiko, mokõi, purahéi, apáy, reindy.
+      const glide = word[i + 1];
+      if ((glide === "i" || glide === "y") && !this.isV(word[i + 2])) { syl += glide; i++; }
+      s.push(syl);
     }
     if (onset) { if (s.length) s[s.length - 1] += onset; else s.push(onset); }
     return s.length ? s : [word];
