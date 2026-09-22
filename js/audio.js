@@ -6,10 +6,10 @@
 
 // ---------------- Written phonetic guide ----------------
 const Pron = {
-  V: "aeiouyáéíóúãẽĩõũỹÿ",
-  ACUTE: "áéíóúÿ",
+  V: "aeiouyáéíóúýÿãẽĩõũỹ",
+  ACUTE: "áéíóúýÿ",
   NASAL: "ãẽĩõũỹ",
-  isV(c) { return this.V.indexOf(c.toLowerCase()) >= 0; },
+  isV(c) { return !!c && this.V.indexOf(c.toLowerCase()) >= 0; },
 
   // Split a word into (roughly CV) syllables. Guaraní is highly phonetic and mostly
   // open-syllable, so grouping each vowel with its preceding consonants works well.
@@ -21,8 +21,9 @@ const Pron = {
       const c = word[i];
       if (this.isV(c)) {
         // In gua/kué the u is a glide belonging to the onset, not its own syllable:
-        // kuarahy → kua-ra-hy, ha'ekuéra → ha-'e-kué-ra.
-        if (c === "u" && /[gk]$/.test(onset) && this.isV(word[i + 1] || "")) { onset += c; continue; }
+        // kuarahy → kua-ra-hy, ha'ekuéra → ha-'e-kué-ra. Only when a vowel follows —
+        // word-final -ku/-gu is a plain syllable (haku → ha-ku).
+        if (c === "u" && /[gk]$/.test(onset) && this.isV(word[i + 1])) { onset += c; continue; }
         s.push(onset + c); onset = "";
       } else { onset += c; }
     }

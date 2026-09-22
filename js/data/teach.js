@@ -91,7 +91,7 @@ const TEACH = {
       { es: "che = mi, nde = tu. Van siempre antes del sustantivo.", en: "che = my, nde = your. They always go before the noun." },
       { es: "El parentesco depende del sexo del que habla, no del pariente.", en: "Kinship words depend on the speaker's sex, not the relative's." },
       { es: "Sy (mamá) y túva (papá) valen para todos.", en: "Sy (mother) and túva (father) work for everyone." },
-      { es: "Al abuelo también se le dice tamói; a la abuela, jarýi.", en: "A grandfather is also called tamói; a grandmother, jarýi." }
+      { es: "Al abuelo, tamói, también se le dice taita guasu («padre grande»).", en: "A grandfather, tamói, is also called taita guasu (\"big father\")." }
     ],
     examples: [
       { gn: "Che sy ha che túva", es: "Mi mamá y mi papá", en: "My mother and my father" },

@@ -20,11 +20,11 @@ const CURRICULUM = [
         { gn: "Néi", es: "Bueno / está bien", en: "Okay" } ] },
       { title: { es: "La familia", en: "Family" }, vocab: [
         { gn: "Sy", es: "Mamá", en: "Mother" }, { gn: "Túva", es: "Papá", en: "Father" },
-        { gn: "Memby", es: "Hijo/a (de la madre)", en: "Child (of mother)" },
-        { gn: "Joyke'y", es: "Hermano", en: "Brother" },
-        { gn: "Reindy", es: "Hermana", en: "Sister" },
+        { gn: "Memby", es: "Hijo/a (de la madre)", en: "Child (of a woman)" },
+        { gn: "Kyvy", es: "Hermano (de una mujer)", en: "Brother (of a woman)" },
+        { gn: "Reindy", es: "Hermana (de un varón)", en: "Sister (of a man)" },
         { gn: "Jarýi", es: "Abuela", en: "Grandmother" },
-        { gn: "Taita guasu", es: "Abuelo", en: "Grandfather" } ] },
+        { gn: "Tamói", es: "Abuelo", en: "Grandfather" } ] },
       { title: { es: "Palabras básicas", en: "Basic words" }, vocab: [
         { gn: "Heẽ", es: "Sí", en: "Yes" }, { gn: "Nahániri", es: "No", en: "No" },
         { gn: "Óga", es: "Casa", en: "House" }, { gn: "Y", es: "Agua", en: "Water" },
