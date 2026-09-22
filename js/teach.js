@@ -4,7 +4,7 @@
    short pages built from TEACH (js/data/teach.js) plus the lesson's own vocab:
 
      1. Concept       — what this lesson is about, in plain language + key points
-     2. Vocab (×n)    — word cards with the written pronunciation guide and a listen button
+     2. Vocab (×n)    — word cards with the written pronunciation guide
      3. Examples      — the words used in real sentences
      4. Culture       — a "did you know" note, ending in the Practice button
 
@@ -43,12 +43,6 @@ const Teach = {
   // Punctuation makes the phonetic guide unreadable in full sentences — strip it first.
   _plain(s) { return String(s).replace(/[—–\-,.?!¿¡:;«»"]/g, " ").replace(/\s+/g, " ").trim(); },
 
-  // A speaker button. `id` namespaces teach audio so a future recording can attach to it.
-  _speak(id, gn) {
-    return `<button class="pron-play teach-play" data-id="${this._esc(id)}" data-gn="${this._esc(gn)}"
-             title="${i18n.t("expr.listen")}" aria-label="${i18n.t("expr.listen")}">🔊</button>`;
-  },
-
   // ---------- shell ----------
   render() {
     const s = this.state;
@@ -82,12 +76,6 @@ const Teach = {
       this.render();
       window.scrollTo(0, 0);
     };
-
-    // One delegated handler for every 🔊 on the page.
-    document.getElementById("teach-body").addEventListener("click", ev => {
-      const b = ev.target.closest(".teach-play");
-      if (b) ExprAudio.play(b.dataset.id, b.dataset.gn);
-    });
   },
 
   toPractice() {
@@ -120,14 +108,10 @@ const Teach = {
   page_vocab(page) {
     const s = this.state;
     const box = document.getElementById("teach-body");
-    const cards = page.words.map((w, k) => {
-      const id = `teach:${s.grade.id}:${s.lessonIdx}:${page.from + k}`;
+    const cards = page.words.map(w => {
       return `
         <article class="teach-word">
-          <div class="teach-word-top">
-            <p class="teach-gn">${this._esc(w.gn)}</p>
-            ${this._speak(id, w.gn)}
-          </div>
+          <p class="teach-gn">${this._esc(w.gn)}</p>
           <p class="teach-pron">${Pron.guide(w.gn)}</p>
           <p class="teach-mean">${this._esc(i18n.meaning(w))}</p>
         </article>`;
@@ -142,12 +126,9 @@ const Teach = {
   page_examples() {
     const s = this.state;
     const box = document.getElementById("teach-body");
-    const rows = s.notes.examples.map((ex, k) => `
+    const rows = s.notes.examples.map(ex => `
       <article class="teach-ex">
-        <div class="teach-word-top">
-          <p class="teach-ex-gn">${this._esc(ex.gn)}</p>
-          ${this._speak(`teach:${s.grade.id}:${s.lessonIdx}:ex${k}`, ex.gn)}
-        </div>
+        <p class="teach-ex-gn">${this._esc(ex.gn)}</p>
         <p class="teach-pron">${Pron.guide(this._plain(ex.gn))}</p>
         <p class="teach-mean">${this._esc(i18n.meaning(ex))}</p>
       </article>`).join("");

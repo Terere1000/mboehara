@@ -4,7 +4,6 @@
 const App = {
   init() {
     Progress.load();
-    ExprAudio.init();
     i18n.apply();
 
     document.getElementById("brand-home").onclick = () => this.home();
@@ -131,9 +130,7 @@ const App = {
 
     const exprMeaning = e => (i18n.lang === "en" && e.english) ? e.english : e.spanish;
 
-    const esc = s => s.replace(/"/g, "&quot;");
-
-    const render = async () => {
+    const render = () => {
       const q = this._expr.q.trim().toLowerCase();
       const cat = this._expr.cat;
       const list = EXPRESSIONS.filter(e =>
@@ -146,48 +143,15 @@ const App = {
         p.classList.toggle("active", p.dataset.cat === cat));
       countEl.textContent = list.length + " " + i18n.t("expr.count");
 
-      const recorded = new Set(await ExprAudio.allIds());
-
       grid.innerHTML = list.length
-        ? list.map(e => {
-            const has = recorded.has(e.id);
-            const recBtn = ExprAudio.canRecord ? `
-              <button class="pron-rec ${has ? "recorded" : ""}" data-id="${e.id}" data-gn="${esc(e.guarani)}">
-                🎤 <span>${has ? i18n.t("expr.recorded") : i18n.t("expr.record")}</span>
-              </button>
-              ${has ? `<button class="pron-del" data-id="${e.id}" title="${i18n.t("expr.delete")}">🗑</button>` : ""}` : "";
-            return `
-            <article class="expr-card ${has ? "has-rec" : ""}" data-id="${e.id}">
-              <div class="expr-top">
-                <p class="expr-gn">${e.guarani}</p>
-                <button class="pron-play" data-id="${e.id}" data-gn="${esc(e.guarani)}" title="${i18n.t("expr.listen")}">🔊</button>
-              </div>
+        ? list.map(e => `
+            <article class="expr-card" data-id="${e.id}">
+              <p class="expr-gn">${e.guarani}</p>
               <p class="expr-pron">${Pron.guide(e.guarani)}</p>
               <p class="expr-es">${exprMeaning(e)}</p>
-              <div class="expr-rec-row">${recBtn}</div>
               <span class="expr-badge" style="--badge:${catColor(e.category)}">${catLabel(e.category)}</span>
-            </article>`;
-          }).join("")
+            </article>`).join("")
         : `<p class="expr-empty muted">${i18n.t("expr.none")}</p>`;
-    };
-
-    // Delegated audio interactions (play / record / delete).
-    grid.onclick = async ev => {
-      const play = ev.target.closest(".pron-play");
-      const rec = ev.target.closest(".pron-rec");
-      const del = ev.target.closest(".pron-del");
-      if (play) { ExprAudio.play(play.dataset.id, play.dataset.gn); return; }
-      if (del) { await ExprAudio.del(del.dataset.id); render(); return; }
-      if (rec) {
-        const id = rec.dataset.id;
-        if (ExprAudio.isRecording(id)) { ExprAudio.stopRecord(); return; } // onSaved re-renders
-        if (ExprAudio.recording) { ExprAudio.stopRecord(); render(); return; }
-        try {
-          await ExprAudio.startRecord(id, () => render());
-          rec.classList.add("recording");
-          rec.querySelector("span").textContent = i18n.t("expr.recording");
-        } catch (e) { alert(i18n.t("expr.micDenied")); }
-      }
     };
 
     searchEl.oninput = () => { this._expr.q = searchEl.value; render(); };

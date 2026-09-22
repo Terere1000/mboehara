@@ -21,11 +21,15 @@ Scripts load in this order (see `index.html`):
 5. `js/game.js` — `Game`: builds exercises from a lesson's vocab and runs the lesson loop (hearts, scoring, stars).
 6. `js/app.js` — `App`: the three screens (Home/world-map, Grade/lesson-list, Profile) + top-bar. `App.openLesson()` is the Learn → Practice entry point.
 
-`js/audio.js` — used only by the Expresiones Comunes section. `Pron.guide(gn)` builds an
-approximate written phonetic guide from Guaraní spelling. `ExprAudio` plays a user's own
-recording when present (stored in IndexedDB "mboehara-audio", keyed by expression `id`)
-else browser TTS (Spanish voice), and records via MediaRecorder. Loaded before `game.js`;
-init'd in `App.init`. Recording needs a secure context (localhost / https).
+`js/audio.js` — `Pron.guide(gn)` builds the approximate written phonetic guide from Guaraní
+spelling, used in both the Expresiones Comunes cards and Teach's vocab/example cards.
+`ExprAudio` (plays a user's own recording from IndexedDB "mboehara-audio" else browser TTS;
+records via MediaRecorder) is **defined but currently unused** — audio playback/recording UI
+was temporarily removed from `app.js` (expressions) and `js/teach.js` (Learn step) until
+real voice recordings are ready. To re-enable: reintroduce the 🔊/🎤/🗑 buttons and
+`ExprAudio.play/startRecord/stopRecord/del` calls that were stripped from those two files
+(see git history around "temporarily remove the audio"); `ExprAudio.init()` also needs to be
+called again from `App.init`.
 
 Other files: `css/styles.css` (white minimalist theme, CSS variables in `:root`),
 `assets/mascot.png` (the toucan teacher — glasses, cut out on transparency).

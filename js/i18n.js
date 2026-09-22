@@ -62,13 +62,7 @@ const I18N = {
     "expr.all": "Todas",
     "expr.count": "expresiones",
     "expr.none": "No se encontraron expresiones",
-    "expr.pronNote": "Pronunciación aproximada · ’ = golpe glotal · ɨ = i gutural · MAYÚSCULA = sílaba tónica",
-    "expr.listen": "Escuchar",
-    "expr.record": "Grabar mi voz",
-    "expr.recording": "Grabando… (tocá para parar)",
-    "expr.recorded": "Mi grabación",
-    "expr.delete": "Borrar grabación",
-    "expr.micDenied": "No se pudo acceder al micrófono"
+    "expr.pronNote": "Pronunciación aproximada · ’ = golpe glotal · ɨ = i gutural · MAYÚSCULA = sílaba tónica"
   },
   en: {
     "hero.tagline": "Learn Guaraní by playing",
@@ -132,13 +126,7 @@ const I18N = {
     "expr.all": "All",
     "expr.count": "expressions",
     "expr.none": "No expressions found",
-    "expr.pronNote": "Approximate pronunciation · ’ = glottal stop · ɨ = guttural i · CAPS = stressed syllable",
-    "expr.listen": "Listen",
-    "expr.record": "Record my voice",
-    "expr.recording": "Recording… (tap to stop)",
-    "expr.recorded": "My recording",
-    "expr.delete": "Delete recording",
-    "expr.micDenied": "Couldn't access the microphone"
+    "expr.pronNote": "Approximate pronunciation · ’ = glottal stop · ɨ = guttural i · CAPS = stressed syllable"
   }
 };
 

@@ -9,7 +9,7 @@ The mascot is a **tucán (tukã)** in glasses — the teacher the name *Mbo'ehá
 ## Features
 - **Every lesson teaches before it tests.** Tapping a lesson opens a short **Learn** step —
   a plain-language explanation written for someone who has never seen Guaraní, the new words
-  with their pronunciation guide and 🔊 button, example sentences, and a culture note — and
+  with their written pronunciation guide, example sentences, and a culture note — and
   ends with a **Practicar →** button that starts the quiz. Read it once and a
   *skip straight to practice* link appears on later visits.
 - **12 grades / Worlds**, unlocked in sequence as you progress (finish ~60% of a grade to unlock the next).
@@ -49,15 +49,16 @@ Lesson notes are written for **grades 1–3** so far (12 lessons). Any lesson wi
 `js/data/teach.js` simply goes straight to the quiz, so the remaining grades can be filled in one
 at a time without touching the code.
 
-## Pronunciation (Expresiones Comunes)
-Each of the 200 expressions has:
-- a **written phonetic guide** (e.g. `[mba-'É-i-cha-pa]`) generated from the Guaraní
-  spelling — approximate: `’` = glottal stop, `ɨ` = guttural *y*, CAPS = stressed syllable;
-- a **🔊 Listen** button. If you've recorded your own voice for that expression it plays
-  your recording; otherwise it falls back to the browser's Spanish voice (approximate);
-- a **🎤 Record my voice** button. Recordings are stored locally in your browser
-  (IndexedDB) and can be deleted (🗑). Recording needs mic permission and a secure context
-  (works on `localhost` and on the GitHub Pages `https://` site, not from a `file://` path).
+## Pronunciation
+Every expression and vocab word has a **written phonetic guide** (e.g. `[mba-'É-i-cha-pa]`)
+generated from the Guaraní spelling — approximate: `’` = glottal stop, `ɨ` = guttural *y*,
+CAPS = stressed syllable.
+
+**Audio is temporarily off.** The app previously had a 🔊 button (browser TTS with a Spanish
+voice, or a user's own recording) and a 🎤 record-your-voice feature. Both are paused until
+high-quality real recordings are ready — the underlying code (`js/audio.js`'s `ExprAudio`,
+including the IndexedDB recording store) is intact and unused, so audio can be switched back
+on without rebuilding it.
 
 ## Note on content
 The Guaraní vocabulary is an **educational draft** drawn from standard references and the MEC program structure. A native-speaker / teacher review is recommended before classroom use.
