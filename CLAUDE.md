@@ -14,7 +14,7 @@ Scripts load in this order (see `index.html`):
 1. `js/data/curriculum.js` — `CURRICULUM`: the 12 grades → lessons → vocab. **Most content edits happen here.**
 2. `js/data/index.js` — `grades` alias + learner `RANKS` / `rankForLevel()`.
 2b. `js/data/expressions.js` — `EXPRESSIONS` (200 `{guarani, spanish, english, category}`), `EXPRESSION_CATEGORIES`, and `EXPRESSION_CATEGORY_LABELS` ({es,en} per category), powering the standalone "Expresiones Comunes" section (`App.expressions()` — filter bar + search). Card gloss + category labels follow the ES/EN toggle; the `category` field stays the canonical Spanish key. Regenerate from `guarani-expressions.ts` if that reference file is added.
-2c. `js/data/teach.js` — `TEACH`: the **lesson notes** shown before the quiz, keyed `"<gradeId>:<lessonIdx>"` (same identity `Progress` uses), plus `teachFor(gradeId, idx)`. Written for absolute beginners. Grades 1–3 are authored; a lesson with no entry just skips the Learn step.
+2c. `js/data/teach.js` — `TEACH`: the **lesson notes** shown before the quiz, keyed `"<gradeId>:<lessonIdx>"` (same identity `Progress` uses), plus `teachFor(gradeId, idx)`. Written for absolute beginners. All 12 grades are authored (45 lessons); a lesson with no entry just skips the Learn step.
 3. `js/i18n.js` — `i18n` object: ES/EN UI strings (`I18N`), language toggle, `i18n.meaning({es,en})`.
 4. `js/progress.js` — `Progress`: localStorage state (XP, level, streak, completed lessons, stars, lessons read, grade unlocks).
 4b. `js/teach.js` — `Teach`: the Learn screen. Pages a lesson's notes (concept → vocab cards → examples → culture) and hands off to `Game` via the Practice button.

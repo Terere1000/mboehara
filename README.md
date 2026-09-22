@@ -45,9 +45,9 @@ In the repo: **Settings → Pages → Build from branch → `main` / root**, the
 Plain HTML, CSS and vanilla JavaScript. The curriculum lives in `js/data/curriculum.js`; the lesson notes (the Learn step's content) in `js/data/teach.js`; the Learn screen in `js/teach.js`; the exercise engine in `js/game.js`; screens/navigation in `js/app.js`; progress persistence in `js/progress.js`; UI strings in `js/i18n.js`.
 
 ### Lesson notes coverage
-Lesson notes are written for **grades 1–3** so far (12 lessons). Any lesson without an entry in
-`js/data/teach.js` simply goes straight to the quiz, so the remaining grades can be filled in one
-at a time without touching the code.
+Lesson notes are written for **all 12 grades** (45 lessons). Any lesson without an entry in
+`js/data/teach.js` simply goes straight to the quiz, so new lessons can be added one at a time
+without touching the code.
 
 ## Pronunciation
 Every expression and vocab word has a **written phonetic guide** (e.g. `[mba-'É-i-cha-pa]`)
