@@ -41,10 +41,15 @@ Mascot CSS sets `height` only with `width: auto` — never both, or the art gets
 - A grade: `{ id, num, color, icon, title:{es,en}, lessons:[...] }`
 - A lesson: `{ title:{es,en}, vocab:[ {gn, es, en, pron?}, ... ] }`
 - `pron` is an **optional** hand-written phonetic guide that overrides the one `Pron.guide()`
-  generates (written without brackets, e.g. `pron: "ÑAN-de re-KO"`). Only add it where the
+  generates (written without brackets, e.g. `pron: "ÑA-nde re-KO"`). Only add it where the
   generator gets the stress wrong — it already handles written accents, a lone nasal tilde,
-  and gua/kué glides. The same optional field works on `TEACH` examples and, as a 4th column,
-  on expression rows in `js/data/expressions.js`.
+  gua/kué glides and falling diphthongs. The same optional field works on `TEACH` examples
+  and, as a 4th column, on expression rows in `js/data/expressions.js`.
+- **Overrides go stale.** They are frozen text, so improving `Pron.syllabify()` does not
+  update them and they can end up *worse* than the generator. After changing the generator,
+  re-check every override: it should differ from `Pron.guide(word)` only in which syllable
+  is capitalised, unless it is deliberately correcting a syllable boundary (`che paraguáyo`
+  treats y as a consonant; `tu-PÃO` and `te-tã-ɨ-GUA` fix a diphthong and a morpheme edge).
 - Exercises are **generated** from `vocab` by `Game.build()` — you don't author exercises by hand.
   Types: multiple choice (both directions), build-the-word, true/false, matching.
 - Lesson notes (`TEACH["g1:0"]`): `{ focus:{es,en}, intro:[{es,en}], points:[{es,en}],

@@ -111,7 +111,7 @@ const CURRICULUM = [
       { title: { es: "Pronombres", en: "Pronouns" }, vocab: [
         { gn: "Che", es: "Yo", en: "I" }, { gn: "Nde", es: "Tú / vos", en: "You" },
         { gn: "Ha'e", es: "Él / ella", en: "He / she", pron: "HA-'e" },
-        { gn: "Ñande", es: "Nosotros (incl.)", en: "We (incl.)", pron: "ÑAN-de" },
+        { gn: "Ñande", es: "Nosotros (incl.)", en: "We (incl.)", pron: "ÑA-nde" },
         { gn: "Ore", es: "Nosotros (excl.)", en: "We (excl.)", pron: "O-re" },
         { gn: "Peẽ", es: "Ustedes", en: "You (pl.)" },
         { gn: "Ha'ekuéra", es: "Ellos", en: "They" } ] },
@@ -241,7 +241,7 @@ const CURRICULUM = [
         { gn: "Joaju", es: "Unión", en: "Unity" } ] },
       { title: { es: "Cultura guaraní", en: "Guaraní culture" }, vocab: [
         { gn: "Tereré", es: "Tereré", en: "Tereré (cold mate)" }, { gn: "Ka'a", es: "Yerba mate", en: "Yerba mate" },
-        { gn: "Ñande reko", es: "Nuestra cultura / folclore", en: "Our culture / folklore", pron: "ÑAN-de re-KO" },
+        { gn: "Ñande reko", es: "Nuestra cultura / folclore", en: "Our culture / folklore", pron: "ÑA-nde re-KO" },
         { gn: "Pohã ñana", es: "Hierbas medicinales", en: "Medicinal herbs" },
         { gn: "Jeroky", es: "Danza", en: "Dance" } ] }
     ]
