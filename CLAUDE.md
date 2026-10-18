@@ -8,7 +8,8 @@ native language). Its 12 levels mirror how Guaraní is taught in Paraguayan scho
 No build step, no runtime dependencies. (Node is installed via Homebrew and is needed only
 for `tools/build-pages.mjs`, never to run the app.)
 - Open `index.html` directly in a browser, **or**
-- Serve the folder: `python3 -m http.server` then visit the printed URL.
+- Serve the folder: `python3 -m http.server` then visit the printed URL
+  (`.claude/launch.json` wires this up for Claude Code's preview pane).
 
 ## Architecture (vanilla JS, no framework)
 Scripts load in this order (see `index.html`):
@@ -20,6 +21,11 @@ Scripts load in this order (see `index.html`):
 4. `js/progress.js` — `Progress`: localStorage state (XP, level, streak, completed lessons, stars, lessons read, grade unlocks).
 4b. `js/teach.js` — `Teach`: the Learn screen. Pages a lesson's notes (concept → vocab cards → examples → culture) and hands off to `Game` via the Practice button.
 5. `js/game.js` — `Game`: builds exercises from a lesson's vocab and runs the lesson loop (hearts, scoring, stars).
+5b. `js/search.js` — `Search`: the site-wide dictionary search behind the 🔎 in the top bar
+   (also `/` or Ctrl/Cmd-K). Flattens `CURRICULUM` vocab, `EXPRESSIONS` and the `TEACH`
+   notes into one in-memory index on first use — no index file, no network. A hit opens a
+   definition card (word, pronunciation, both glosses, where it's taught, related words);
+   from there `Search.go()` opens the lesson, ignoring grade locks like `openFromLink()`.
 6. `js/app.js` — `App`: the three screens (Home/world-map, Grade/lesson-list, Profile) + top-bar. `App.openLesson()` is the Learn → Practice entry point.
 
 `js/audio.js` — `Pron.guide(gn)` builds the approximate written phonetic guide from Guaraní
@@ -77,6 +83,14 @@ crawlable HTML page per lesson plus an index, and `sitemap.xml` lists them — a
 - Every user-facing string is bilingual `{es, en}`; render with `i18n.meaning(pair)` or `i18n.t(key)`.
   When adding UI text, add the key to **both** `es` and `en` in `js/i18n.js`.
 - Guaraní orthography matters: nasal tildes (ã ẽ ĩ õ ũ ỹ) and the glottal stop `'` are significant.
+- **Searching is accent-blind on purpose.** `Search.fold()` strips nasal tildes, accents and the
+  puso before matching, so "nande" finds "Ñande" and "mbaeichapa" finds "Mba'éichapa" — most
+  learners have no Guaraní keyboard. Folding is for *matching only*: results always render the
+  true spelling. Any new filter over Guaraní text should call `Search.fold()` rather than
+  `toLowerCase()` (the Expresiones filter in `app.js` does).
+- A one-letter query matches Guaraní **headwords only** — `y` is water, not a prefix sweep.
+- The top bar is full at 375px. Anything added there needs a `@media (max-width: 520px)` rule;
+  the level chip already drops its rank name (`.rank-name`) to make room.
 - Keep the aesthetic white/minimalist; reuse existing CSS variables and classes.
 - Progress persists in `localStorage` under `mboehara.progress.v1`; bump the key if the shape changes.
 

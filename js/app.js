@@ -13,6 +13,7 @@ const App = {
       this.refreshTopbar();
       this.rerender();
     };
+    Search.mount();
     this.route = { name: "home" };
     this.refreshTopbar();
     this.home();
@@ -38,8 +39,13 @@ const App = {
     document.querySelector("#stat-streak b").textContent = Progress.data.streak;
     document.querySelector("#stat-xp b").textContent = Progress.data.xp;
     const rank = rankForLevel(Progress.level);
-    document.getElementById("stat-level").textContent = "Lv " + Progress.level + " · " + i18n.meaning(rank);
+    // The rank name is wrapped so narrow screens can drop it and keep just "Lv N"
+    // (the full rank is always on the profile screen).
+    document.getElementById("stat-level").innerHTML =
+      "Lv " + Progress.level + '<span class="rank-name"> · ' + i18n.meaning(rank) + "</span>";
     document.getElementById("lang-toggle").textContent = i18n.lang === "es" ? "EN" : "ES";
+    const sb = document.getElementById("search-open");
+    if (sb) { sb.setAttribute("aria-label", i18n.t("search.open")); sb.title = i18n.t("search.open") + " (/)"; }
   },
 
   rerender() {
@@ -147,13 +153,13 @@ const App = {
     const exprMeaning = e => (i18n.lang === "en" && e.english) ? e.english : e.spanish;
 
     const render = () => {
-      const q = this._expr.q.trim().toLowerCase();
+      const q = Search.fold(this._expr.q);
       const cat = this._expr.cat;
       const list = EXPRESSIONS.filter(e =>
         (cat === "*" || e.category === cat) &&
-        (!q || e.guarani.toLowerCase().includes(q) ||
-               e.spanish.toLowerCase().includes(q) ||
-               (e.english && e.english.toLowerCase().includes(q))));
+        (!q || Search.fold(e.guarani).includes(q) ||
+               Search.fold(e.spanish).includes(q) ||
+               (e.english && Search.fold(e.english).includes(q))));
 
       bar.querySelectorAll(".filter-pill").forEach(p =>
         p.classList.toggle("active", p.dataset.cat === cat));
