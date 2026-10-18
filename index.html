@@ -62,6 +62,12 @@
   <script src="js/teach.js"></script>
   <script src="js/game.js"></script>
   <script src="js/search.js"></script>
+  <!-- Optional accounts. The app works fully without these: if the CDN is blocked or
+       js/supabase-config.js is left blank, no account UI appears and progress stays
+       in localStorage, exactly as before. -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/account.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

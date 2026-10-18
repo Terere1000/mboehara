@@ -26,6 +26,12 @@ Scripts load in this order (see `index.html`):
    notes into one in-memory index on first use — no index file, no network. A hit opens a
    definition card (word, pronunciation, both glosses, where it's taught, related words);
    from there `Search.go()` opens the lesson, ignoring grade locks like `openFromLink()`.
+5c. `js/account.js` — `Account`: **optional** accounts (username + password, no email),
+   backed by Supabase. Entirely additive — with `js/supabase-config.js` blank, the CDN
+   blocked or no network, nothing renders and progress stays in localStorage exactly as
+   before. Setup and the reasoning live in `supabase/README.md`; the schema and RLS
+   policies in `supabase/schema.sql`. `Account.init()` wraps `Progress.save()` so every
+   save debounces a push; sign-in **merges** rather than overwrites.
 6. `js/app.js` — `App`: the three screens (Home/world-map, Grade/lesson-list, Profile) + top-bar. `App.openLesson()` is the Learn → Practice entry point.
 
 `js/audio.js` — `Pron.guide(gn)` builds the approximate written phonetic guide from Guaraní
@@ -93,6 +99,13 @@ crawlable HTML page per lesson plus an index, and `sitemap.xml` lists them — a
   the level chip already drops its rank name (`.rank-name`) to make room.
 - Keep the aesthetic white/minimalist; reuse existing CSS variables and classes.
 - Progress persists in `localStorage` under `mboehara.progress.v1`; bump the key if the shape changes.
+- **Local storage is the source of truth, the server is a backup.** Write locally first and
+  sync after; the app must stay fully usable with no account and no network.
+- **Never collect personal data from learners.** Accounts take a username and a password and
+  nothing else — no email, no real name, no birthday — because many learners are children.
+  If you add a field, the question is whether the app genuinely cannot work without it.
+- `Progress.merge()` is max-based and idempotent on purpose: signing in must never cost
+  somebody the lessons they did as a guest, and syncing twice must not change the answer.
 
 ## Common tasks
 - **Add/fix vocabulary** → edit `CURRICULUM` in `js/data/curriculum.js`.

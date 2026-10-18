@@ -95,5 +95,43 @@ const Progress = {
 
   totalLessonsDone() { return Object.values(this.data.lessons).filter(l => l.done).length; },
   totalStars() { return Object.values(this.data.lessons).reduce((a, l) => a + (l.stars || 0), 0); },
-  gradesComplete(grades) { return grades.filter(g => this.gradeDone(g)).length; }
+  gradesComplete(grades) { return grades.filter(g => this.gradeDone(g)).length; },
+
+  // ---------- account sync ----------
+  // Fold a remote save into the local one. Signing in must never cost somebody the
+  // lessons they did as a guest, and syncing twice must not change the answer, so
+  // every field merges by "keep the better of the two" rather than by overwriting.
+  merge(remote) {
+    if (!remote || typeof remote !== "object") return this.data;
+    const a = this.data, b = remote;
+
+    a.xp     = Math.max(a.xp || 0, b.xp || 0);
+    a.streak = Math.max(a.streak || 0, b.streak || 0);
+    // ISO yyyy-mm-dd sorts lexically, so the later string is the later day
+    if (b.lastDay && (!a.lastDay || b.lastDay > a.lastDay)) a.lastDay = b.lastDay;
+
+    Object.entries(b.lessons || {}).forEach(([id, r]) => {
+      const mine = a.lessons[id];
+      a.lessons[id] = mine
+        ? { done: !!(mine.done || r.done), stars: Math.max(mine.stars || 0, r.stars || 0) }
+        : { done: !!r.done, stars: r.stars || 0 };
+    });
+
+    Object.keys(b.taught || {}).forEach(id => { if (b.taught[id]) a.taught[id] = true; });
+
+    this.save();
+    return a;
+  },
+
+  // A plain snapshot to hand to the server.
+  snapshot() { return JSON.parse(JSON.stringify(this.data)); },
+
+  // Replace local state wholesale (used when switching accounts, never on sign-in).
+  replace(data) {
+    this.data = data && typeof data === "object" ? data : this._blank();
+    if (!this.data.lessons) this.data.lessons = {};
+    if (!this.data.taught) this.data.taught = {};
+    this.save();
+    return this.data;
+  }
 };

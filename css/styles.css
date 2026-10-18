@@ -401,3 +401,38 @@ body.search-lock { overflow: hidden; }
   .search-open { padding: 6px 8px; font-size: 14px; }
   .brand-name { font-size: 15px; }
 }
+
+/* ---------- Optional account (js/account.js) ---------- */
+.account {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px; margin: 24px 0 16px; text-align: left;
+}
+.account h3 { margin: 0 0 10px; font-size: 16px; }
+.account-lead { margin: 0 0 4px; font-weight: 600; font-size: 14px; }
+.account-note, .account-hint { font-size: 13px; margin: 0 0 12px; }
+.account-hint { margin: -6px 0 12px; }
+.account-who { margin: 0 0 4px; font-size: 14px; }
+.account-status { font-size: 13px; margin: 0 0 14px; }
+
+.account-form { display: flex; flex-direction: column; }
+.account-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.account-input {
+  font: inherit; padding: 10px 12px; margin-bottom: 12px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink);
+}
+.account-input:focus { outline: none; border-color: var(--accent); }
+
+/* No email means no password reset — say so where it cannot be missed. */
+.account-warn {
+  font-size: 12px; line-height: 1.45; margin: 0 0 12px;
+  background: #fff8e6; border: 1px solid #f3e0a8; border-radius: 10px; padding: 9px 11px;
+}
+.account-error {
+  font-size: 13px; color: var(--accent); margin: 0 0 10px;
+  background: var(--accent-soft); border-radius: 10px; padding: 8px 11px;
+}
+.account-switch {
+  background: none; border: none; cursor: pointer; font: inherit; font-size: 13px;
+  color: var(--muted); text-decoration: underline; padding: 10px 0 0;
+}
+.account-switch:hover { color: var(--ink); }

@@ -14,6 +14,10 @@ const App = {
       this.rerender();
     };
     Search.mount();
+    // Accounts are optional and load late; the app is fully usable before this resolves.
+    if (typeof Account !== "undefined") {
+      Account.init().then(ok => { if (ok) { this.refreshTopbar(); this.rerender(); } });
+    }
     this.route = { name: "home" };
     this.refreshTopbar();
     this.home();
@@ -235,6 +239,96 @@ const App = {
     else practice();
   },
 
+  // ---------- Account (optional; see js/account.js) ----------
+  // Renders nothing at all when Supabase isn't configured, so an unconfigured copy of
+  // the app looks and behaves exactly as it did before accounts existed.
+  accountHTML() {
+    if (typeof Account === "undefined" || !Account.available()) return "";
+
+    if (Account.signedIn()) {
+      return `
+        <section class="account" id="account">
+          <h3>${i18n.t("acct.title")}</h3>
+          <p class="account-who">${i18n.t("acct.signedInAs")} <b>${Search.esc(Account.username || "")}</b></p>
+          <p class="account-status muted" id="account-status">${i18n.t(Account.statusKey())}</p>
+          <button class="btn btn-ghost" id="acct-signout">${i18n.t("acct.signOut")}</button>
+        </section>`;
+    }
+
+    const mode = this._acctMode || "up";          // "up" = create, "in" = sign in
+    return `
+      <section class="account" id="account">
+        <h3>${i18n.t("acct.title")}</h3>
+        <p class="account-lead">${i18n.t("acct.guest")}</p>
+        <p class="muted account-note">${i18n.t("acct.guestNote")}</p>
+        <div class="account-form">
+          <label class="account-label" for="acct-user">${i18n.t("acct.username")}</label>
+          <input id="acct-user" class="account-input" type="text" autocomplete="username"
+                 autocapitalize="off" spellcheck="false" maxlength="20">
+          ${mode === "up" ? `<p class="account-hint muted">${i18n.t("acct.usernameHint")}</p>` : ""}
+          <label class="account-label" for="acct-pass">${i18n.t("acct.password")}</label>
+          <input id="acct-pass" class="account-input" type="password"
+                 autocomplete="${mode === "up" ? "new-password" : "current-password"}">
+          ${mode === "up" ? `<p class="account-warn">${i18n.t("acct.noRecovery")}</p>` : ""}
+          <p class="account-error" id="acct-error" hidden></p>
+          <button class="btn" id="acct-go">${i18n.t(mode === "up" ? "acct.signUp" : "acct.signIn")}</button>
+          <button class="account-switch" id="acct-switch">
+            ${i18n.t(mode === "up" ? "acct.haveAccount" : "acct.newAccount")}
+          </button>
+        </div>
+      </section>`;
+  },
+
+  wireAccount() {
+    if (typeof Account === "undefined" || !Account.available()) return;
+
+    const out = document.getElementById("acct-signout");
+    if (out) {
+      out.onclick = async () => { await Account.signOut(); this.profile(); };
+      return;
+    }
+
+    const go = document.getElementById("acct-go");
+    const sw = document.getElementById("acct-switch");
+    const err = document.getElementById("acct-error");
+    const user = document.getElementById("acct-user");
+    const pass = document.getElementById("acct-pass");
+    if (!go) return;
+
+    sw.onclick = () => { this._acctMode = this._acctMode === "in" ? "up" : "in"; this.profile(); };
+
+    const submit = async () => {
+      err.hidden = true;
+      go.disabled = true;
+      const label = go.textContent;
+      go.textContent = i18n.t("acct.working");
+      const mode = this._acctMode || "up";
+      const res = mode === "up"
+        ? await Account.signUp(user.value, pass.value)
+        : await Account.signIn(user.value, pass.value);
+      go.disabled = false;
+      go.textContent = label;
+      if (res.error) {
+        err.textContent = i18n.t(res.error);
+        err.hidden = false;
+        if (res.detail) console.warn("[account]", res.detail);
+        return;
+      }
+      this.refreshTopbar();
+      this.profile();
+    };
+
+    go.onclick = submit;
+    [user, pass].forEach(el => { el.onkeydown = e => { if (e.key === "Enter") submit(); }; });
+  },
+
+  refreshAccountStatus() {
+    const el = document.getElementById("account-status");
+    if (el && typeof Account !== "undefined" && Account.statusKey()) {
+      el.textContent = i18n.t(Account.statusKey());
+    }
+  },
+
   // ---------- Profile ----------
   profile() {
     this.route = { name: "profile" };
@@ -254,8 +348,10 @@ const App = {
           <div class="pcard"><span class="num">${Progress.totalStars()}</span><span class="lbl">${i18n.t("profile.stars")}</span></div>
           <div class="pcard"><span class="num">${Progress.gradesComplete(grades)}/12</span><span class="lbl">${i18n.t("profile.grades")}</span></div>
         </div>
+        ${this.accountHTML()}
         <button class="btn btn-ghost danger" id="reset">${i18n.t("profile.reset")}</button>
       </section>`;
+    this.wireAccount();
     document.getElementById("back").onclick = () => this.home();
     document.getElementById("reset").onclick = () => {
       if (confirm(i18n.t("profile.resetConfirm"))) {
