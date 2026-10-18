@@ -5,7 +5,8 @@ native language). Its 12 levels mirror how Guaraní is taught in Paraguayan scho
 (grades 1–12), following the MEC *Ñe'ẽ* program progression.
 
 ## How to run it
-No build step, no dependencies (Node/npm are not installed and not needed).
+No build step, no runtime dependencies. (Node is installed via Homebrew and is needed only
+for `tools/build-pages.mjs`, never to run the app.)
 - Open `index.html` directly in a browser, **or**
 - Serve the folder: `python3 -m http.server` then visit the printed URL.
 
@@ -42,8 +43,9 @@ The app is one JS-rendered page, so search engines see little text on it. `apren
 crawlable HTML page per lesson plus an index, and `sitemap.xml` lists them — all **generated** by
 `node tools/build-pages.mjs` from `CURRICULUM`, `TEACH` and `Pron`. Never hand-edit them.
 - **After editing `curriculum.js` or `teach.js`, re-run the script and commit its output**,
-  or the public pages go stale. It needs Node (not installed on Javier's Mac — run it from a
-  Claude Code cloud session, or install Node).
+  or the public pages go stale. Node is installed (Homebrew, `/opt/homebrew/bin/node`), so
+  `node tools/build-pages.mjs` runs locally. It is deterministic: re-running with no source
+  changes leaves the working tree clean.
 - Lesson URLs come from the `SLUGS` map in the script. They are public URLs: once indexed,
   don't rename them. A new lesson fails the build until it gets a slug.
 - Canonical host is `https://www.mboehara.com.py` (the `SITE` constant, and the canonical/OG
