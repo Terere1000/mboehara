@@ -37,6 +37,21 @@ Other files: `css/styles.css` (white minimalist theme, CSS variables in `:root`)
 `onerror="this.remove()"`, so the app degrades gracefully if the file is missing.
 Mascot CSS sets `height` only with `width: auto` — never both, or the art gets squashed.
 
+## Static lesson pages (SEO)
+The app is one JS-rendered page, so search engines see little text on it. `aprender/` holds one
+crawlable HTML page per lesson plus an index, and `sitemap.xml` lists them — all **generated** by
+`node tools/build-pages.mjs` from `CURRICULUM`, `TEACH` and `Pron`. Never hand-edit them.
+- **After editing `curriculum.js` or `teach.js`, re-run the script and commit its output**,
+  or the public pages go stale. It needs Node (not installed on Javier's Mac — run it from a
+  Claude Code cloud session, or install Node).
+- Lesson URLs come from the `SLUGS` map in the script. They are public URLs: once indexed,
+  don't rename them. A new lesson fails the build until it gets a slug.
+- Canonical host is `https://www.mboehara.com.py` (the `SITE` constant, and the canonical/OG
+  tags in `index.html`). Change both together if that ever changes.
+- Pages link into the app with `/?leccion=g2-1`; `App.openFromLink()` opens that lesson,
+  ignoring grade locks on purpose.
+- `assets/og-image.png` (1200×630) is the link-preview image for every page.
+
 ## Data shape
 - A grade: `{ id, num, color, icon, title:{es,en}, lessons:[...] }`
 - A lesson: `{ title:{es,en}, vocab:[ {gn, es, en, pron?}, ... ] }`

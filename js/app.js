@@ -16,6 +16,22 @@ const App = {
     this.route = { name: "home" };
     this.refreshTopbar();
     this.home();
+    this.openFromLink();
+  },
+
+  // Deep link from the static lesson pages (aprender/…): /?leccion=g2-1 opens grade 2,
+  // lesson 2. Deliberately ignores grade locks — someone arriving from a search result
+  // asked for that lesson. The query is then dropped so a reload lands on the map.
+  openFromLink() {
+    if (!location.search) return;
+    const m = /^(g\d+)-(\d+)$/.exec(new URLSearchParams(location.search).get("leccion") || "");
+    history.replaceState(null, "", location.pathname + location.hash);
+    if (!m) return;
+    const gradeIdx = grades.findIndex(g => g.id === m[1]);
+    const g = grades[gradeIdx];
+    if (!g || !g.lessons[+m[2]]) return;
+    this.grade(gradeIdx);
+    this.openLesson(g, +m[2], gradeIdx);
   },
 
   refreshTopbar() {
