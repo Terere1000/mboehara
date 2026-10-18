@@ -9,6 +9,6 @@
    no account UI appears. */
 
 const SUPABASE_CONFIG = {
-  url: "",      // e.g. "https://abcdefghijklm.supabase.co"
-  anonKey: ""   // the "anon / public" key
+  url: "https://nehyzirchibprenvncye.supabase.co",
+  anonKey: "sb_publishable_nXeyYzGrxQlJ3ipLvsyS4A_QESg9NTC"
 };
